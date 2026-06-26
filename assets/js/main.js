@@ -3,6 +3,8 @@
 
   var booted = false;
   var revealObserver = null;
+  var revealItems = [];
+  var pageShown = false;
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function boot() {
@@ -25,10 +27,15 @@
     boot();
   }
 
-  window.addEventListener("pageshow", function (e) {
-    if (!e.persisted) return;
+  window.addEventListener("pageshow", function () {
+    if (!pageShown) {
+      pageShown = true;
+      return;
+    }
     reinitMotion();
   });
+
+  window.addEventListener("load", scheduleRevealFlush);
 
   function resetMotionState() {
     document.querySelectorAll(".reveal, .reveal-stagger, .reveal-media").forEach(function (el) {
@@ -107,7 +114,38 @@
       items.push(el);
     });
 
+    revealItems = items;
     items.forEach(observeReveal);
+    scheduleRevealFlush();
+  }
+
+  function scheduleRevealFlush() {
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        flushVisibleReveals(revealItems);
+      });
+    });
+  }
+
+  function revealIn(el) {
+    if (el.classList.contains("is-in")) return;
+    if (revealObserver) revealObserver.unobserve(el);
+    window.setTimeout(function () {
+      el.classList.add("is-in");
+    }, 60);
+  }
+
+  function isRevealVisible(el) {
+    var rect = el.getBoundingClientRect();
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    return Math.min(rect.bottom, vh) - Math.max(rect.top, 0) > 0;
+  }
+
+  function flushVisibleReveals(items) {
+    items.forEach(function (el) {
+      if (el.classList.contains("is-in")) return;
+      if (isRevealVisible(el)) revealIn(el);
+    });
   }
 
   function getRevealObserver() {
@@ -116,10 +154,7 @@
     revealObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
-        revealObserver.unobserve(entry.target);
-        window.setTimeout(function () {
-          entry.target.classList.add("is-in");
-        }, 60);
+        revealIn(entry.target);
       });
     }, { rootMargin: "0px 0px -4% 0px", threshold: 0 });
     return revealObserver;
@@ -128,14 +163,11 @@
   function observeReveal(el) {
     var observer = getRevealObserver();
     if (!observer) {
-      el.classList.add("is-in");
+      revealIn(el);
       return;
     }
-    var rect = el.getBoundingClientRect();
-    var vh = window.innerHeight || document.documentElement.clientHeight;
-    var visible = Math.min(rect.bottom, vh) - Math.max(rect.top, 0);
-    if (rect.height > vh * 0.85 && visible > 0) {
-      el.classList.add("is-in");
+    if (isRevealVisible(el)) {
+      revealIn(el);
       return;
     }
     observer.observe(el);
