@@ -57,6 +57,10 @@
     if (!wrap || !canvas) return;
 
     var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var staticPage = false;
+    try {
+      staticPage = sessionStorage.getItem("cadestories_seen:" + location.pathname) === "1";
+    } catch (e) {}
     var mouse = { y: 0, targetY: 0 };
     var vignette = null;
     var state = { width: 0, height: 0, frameCount: 0, animId: 0, running: false };
@@ -187,6 +191,14 @@
     }
 
     resize();
+    if (staticPage) {
+      draw();
+      window.addEventListener("cadestories:static-page", function () {
+        stop();
+        draw();
+      }, { once: true });
+      return;
+    }
     start();
     window.addEventListener("resize", scheduleResize, { passive: true });
     if ("IntersectionObserver" in window) {
@@ -202,12 +214,6 @@
       else start();
     });
 
-    window.addEventListener("cadestories:motion-reset", function () {
-      stop();
-      state.frameCount = 0;
-      resize();
-      start();
-    });
   }
 
   if (document.readyState === "loading") {

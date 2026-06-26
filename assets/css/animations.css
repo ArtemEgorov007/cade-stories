@@ -1343,3 +1343,28 @@ lord-icon,
   content-visibility: auto;
   contain-intrinsic-size: auto 500px;
 }
+
+
+/* Repeat visit: html.motion-static — final state, no motion replay */
+html.motion-static .reveal,
+html.motion-static .reveal.is-in,
+html.motion-static .reveal-stagger > *,
+html.motion-static .reveal-stagger.is-in > * {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+}
+html.motion-static .hero--lz::before {
+  opacity: 1;
+  transition: none;
+}
+html.motion-static .lz-marquee__track {
+  animation: none !important;
+}
+html.motion-static .brand-logo__frame,
+html.motion-static .brand-logo__line,
+html.motion-static .brand-logo__dot {
+  animation: none !important;
+  stroke-dashoffset: 0;
+  opacity: 1;
+}
