@@ -225,14 +225,19 @@
     var modal = document.getElementById("cookie-modal");
     if (!banner) return;
 
+    if (banner.parentElement !== document.body) document.body.appendChild(banner);
+    if (modal && modal.parentElement !== document.body) document.body.appendChild(modal);
+
     var KEY = "cadestories_cookie_consent";
     var prefInput = document.getElementById("ck-pref");
     var statInput = document.getElementById("ck-stat");
     var marketingInput = document.getElementById("ck-marketing");
 
     function applyUetConsent(marketing) {
-      window.uetq = window.uetq || [];
-      window.uetq.push("consent", "update", { ad_storage: marketing ? "granted" : "denied" });
+      try {
+        window.uetq = window.uetq || [];
+        window.uetq.push("consent", "update", { ad_storage: marketing ? "granted" : "denied" });
+      } catch (e) {}
     }
     function read() {
       try { return JSON.parse(localStorage.getItem(KEY)); } catch (e) { return null; }
@@ -240,7 +245,16 @@
     function write(data) {
       try { localStorage.setItem(KEY, JSON.stringify(data)); } catch (e) {}
     }
-    function hide() { banner.setAttribute("hidden", ""); }
+    function show() {
+      banner.hidden = false;
+      banner.removeAttribute("hidden");
+      banner.setAttribute("aria-hidden", "false");
+    }
+    function hide() {
+      banner.hidden = true;
+      banner.setAttribute("hidden", "");
+      banner.setAttribute("aria-hidden", "true");
+    }
     function openModal() {
       var saved = read();
       if (saved) {
@@ -248,9 +262,16 @@
         if (statInput) statInput.checked = !!saved.statistics;
         if (marketingInput) marketingInput.checked = !!saved.marketing;
       }
-      if (modal) modal.classList.add("is-open");
+      if (modal) {
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+      }
     }
-    function closeModal() { if (modal) modal.classList.remove("is-open"); }
+    function closeModal() {
+      if (!modal) return;
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+    }
 
     function accept(all) {
       var marketing = all ? true : (marketingInput ? marketingInput.checked : false);
@@ -274,7 +295,7 @@
 
     var saved = read();
     if (saved) { hide(); applyUetConsent(!!saved.marketing); }
-    else { banner.removeAttribute("hidden"); }
+    else { show(); }
 
     bind("cookie-accept", function () { accept(true); });
     bind("cookie-reject", reject);
@@ -286,7 +307,20 @@
 
     function bind(id, fn) {
       var el = document.getElementById(id);
-      if (el) el.addEventListener("click", fn);
+      if (!el) return;
+      var locked = false;
+      var run = function (e) {
+        if (locked) return;
+        locked = true;
+        window.setTimeout(function () { locked = false; }, 350);
+        if (e) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+        fn();
+      };
+      el.addEventListener("click", run);
+      el.addEventListener("touchend", run, { passive: false });
     }
   }
 
