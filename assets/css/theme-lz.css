@@ -346,10 +346,15 @@ a:hover { color: rgba(255, 255, 255, 0.7); }
 @media (max-width: 860px) {
   .stats { grid-template-columns: repeat(2, 1fr); }
   .topics { grid-template-columns: repeat(2, 1fr); }
+  .stat { padding: 1.5rem 1.25rem; }
 }
 @media (max-width: 520px) {
-  .stats { grid-template-columns: 1fr; }
-  .topics { grid-template-columns: 1fr; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .topics { grid-template-columns: repeat(2, 1fr); }
+  .stat { padding: 1.25rem 1rem; }
+  .stat__num { font-size: clamp(1.65rem, 7vw, 2.25rem); }
+  .stat__label { font-size: 0.82rem; line-height: 1.45; }
+  .topic { padding: 0.95rem 0.85rem; font-size: 0.82rem; gap: 0.55rem; }
 }
 
 /* Monochrome decorative imagery to match the LayerZero palette */

@@ -65,7 +65,8 @@
   z-index: 2;
   max-width: 52rem;
   margin: 0 auto;
-  padding: 0 0.25rem;
+  padding: 0;
+  width: 100%;
 }
 
 .hero--lz .hero__eyebrow {
@@ -176,8 +177,22 @@
 }
 
 @media (max-width: 640px) {
-  .hero--lz { padding-top: 14vh; }
-  .hero--lz .hero__actions { flex-direction: column; align-items: stretch; }
+  .hero--lz {
+    min-height: calc(100svh - 4.6rem);
+    padding: 12vh 0 2.25rem;
+  }
+  .hero--lz .hero__center { padding: 0; }
+  .hero--lz .hero__eyebrow { margin-bottom: 1.15rem; }
+  .hero--lz .hero__lead-lz { margin-top: 1.25rem; font-size: 1rem; line-height: 1.65; }
+  .hero--lz .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: 1.65rem;
+    gap: 1rem;
+  }
+  .hero--lz .hero__note { margin-top: 1rem; }
+  .lz-marquee { padding: 0.75rem 0; }
+  .lz-marquee + .section { padding-top: 2.75rem; }
 }
 
 .hero--lz .hero__title-lz {
