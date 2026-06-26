@@ -1,0 +1,346 @@
+(function () {
+  "use strict";
+
+  var booted = false;
+  var revealObserver = null;
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function boot() {
+    if (booted) return;
+    booted = true;
+    initHeroIntro();
+    initScrollReveal();
+    initHeader();
+    initBurger();
+    initFaq();
+    initCookies();
+    initContactForm();
+    initGlossary();
+    initSmoothAnchors();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", boot);
+  } else {
+    boot();
+  }
+
+  window.addEventListener("pageshow", function (e) {
+    if (!e.persisted) return;
+    reinitMotion();
+  });
+
+  function resetMotionState() {
+    document.querySelectorAll(".reveal, .reveal-stagger, .reveal-media").forEach(function (el) {
+      el.classList.remove("is-in");
+    });
+    var hero = document.querySelector(".hero--lz");
+    if (!hero) return;
+    hero.classList.remove("is-scrim-in", "is-text-in");
+    var center = hero.querySelector(".hero__center");
+    if (center) center.classList.remove("is-in");
+  }
+
+  function reinitMotion() {
+    if (revealObserver) {
+      revealObserver.disconnect();
+      revealObserver = null;
+    }
+    resetMotionState();
+    initHeroIntro();
+    initScrollReveal();
+    window.dispatchEvent(new CustomEvent("cadestories:motion-reset"));
+  }
+
+  function initHeroIntro() {
+    var hero = document.querySelector(".hero--lz");
+    var center = hero && hero.querySelector(".hero__center");
+    if (!hero || !center) return;
+
+    if (!center.classList.contains("reveal-stagger")) {
+      center.classList.add("reveal-stagger");
+    }
+    center.removeAttribute("data-hero-intro");
+    hero.classList.remove("is-scrim-in", "is-text-in");
+    center.classList.remove("is-in");
+
+    window.setTimeout(function () {
+      hero.classList.add("is-scrim-in");
+    }, 1100);
+
+    window.setTimeout(function () {
+      hero.classList.add("is-text-in");
+      center.classList.add("is-in");
+    }, 1850);
+  }
+
+  function setupRevealEl(el) {
+    var mode = el.getAttribute("data-reveal");
+    var isGroup = mode === "group";
+    var isMedia = el.classList.contains("hero__media")
+      || el.classList.contains("split__media")
+      || el.classList.contains("split-visual")
+      || el.classList.contains("article__media")
+      || el.classList.contains("viz-frame");
+
+    if (isGroup) {
+      el.classList.add("reveal-stagger");
+    } else if (isMedia) {
+      el.classList.add("reveal", "reveal-media");
+    } else {
+      el.classList.add("reveal");
+    }
+  }
+
+  function initScrollReveal() {
+    var items = [];
+
+    document.querySelectorAll("[data-reveal]").forEach(function (el) {
+      setupRevealEl(el);
+      el.classList.remove("is-in");
+      items.push(el);
+    });
+
+    document.querySelectorAll(".reveal, .reveal-stagger").forEach(function (el) {
+      if (items.indexOf(el) !== -1) return;
+      el.classList.remove("is-in");
+      items.push(el);
+    });
+
+    items.forEach(observeReveal);
+  }
+
+  function getRevealObserver() {
+    if (revealObserver) return revealObserver;
+    if (!("IntersectionObserver" in window)) return null;
+    revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        revealObserver.unobserve(entry.target);
+        window.setTimeout(function () {
+          entry.target.classList.add("is-in");
+        }, 60);
+      });
+    }, { rootMargin: "0px 0px -4% 0px", threshold: 0 });
+    return revealObserver;
+  }
+
+  function observeReveal(el) {
+    var observer = getRevealObserver();
+    if (!observer) {
+      el.classList.add("is-in");
+      return;
+    }
+    var rect = el.getBoundingClientRect();
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    var visible = Math.min(rect.bottom, vh) - Math.max(rect.top, 0);
+    if (rect.height > vh * 0.85 && visible > 0) {
+      el.classList.add("is-in");
+      return;
+    }
+    observer.observe(el);
+  }
+
+  function initHeader() {
+    var bar = document.querySelector(".topbar");
+    if (!bar) return;
+    var ticking = false;
+    var update = function () {
+      bar.classList.toggle("is-scrolled", window.scrollY > 12);
+      ticking = false;
+    };
+    update();
+    window.addEventListener("scroll", function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    }, { passive: true });
+  }
+
+  function initBurger() {
+    var burger = document.getElementById("burger");
+    var nav = document.getElementById("nav");
+    if (!burger || !nav) return;
+
+    burger.addEventListener("click", function () {
+      var open = nav.classList.toggle("is-open");
+      burger.classList.toggle("is-open", open);
+      burger.setAttribute("aria-expanded", open ? "true" : "false");
+      document.body.classList.toggle("nav-open", open);
+    });
+
+    nav.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        nav.classList.remove("is-open");
+        burger.classList.remove("is-open");
+        burger.setAttribute("aria-expanded", "false");
+        document.body.classList.remove("nav-open");
+      });
+    });
+  }
+
+  function initFaq() {
+    document.querySelectorAll(".faq__item").forEach(function (item) {
+      var btn = item.querySelector(".faq__q");
+      var answer = item.querySelector(".faq__a");
+      if (!btn || !answer) return;
+      btn.addEventListener("click", function () {
+        var open = item.classList.toggle("is-open");
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+        answer.style.maxHeight = open ? answer.scrollHeight + "px" : null;
+      });
+    });
+  }
+
+  function initCookies() {
+    var banner = document.getElementById("cookie-banner");
+    var modal = document.getElementById("cookie-modal");
+    if (!banner) return;
+
+    var KEY = "cadestories_cookie_consent";
+    var prefInput = document.getElementById("ck-pref");
+    var statInput = document.getElementById("ck-stat");
+    var marketingInput = document.getElementById("ck-marketing");
+
+    function applyUetConsent(marketing) {
+      window.uetq = window.uetq || [];
+      window.uetq.push("consent", "update", { ad_storage: marketing ? "granted" : "denied" });
+    }
+    function read() {
+      try { return JSON.parse(localStorage.getItem(KEY)); } catch (e) { return null; }
+    }
+    function write(data) {
+      try { localStorage.setItem(KEY, JSON.stringify(data)); } catch (e) {}
+    }
+    function hide() { banner.setAttribute("hidden", ""); }
+    function openModal() {
+      var saved = read();
+      if (saved) {
+        if (prefInput) prefInput.checked = !!saved.preferences;
+        if (statInput) statInput.checked = !!saved.statistics;
+        if (marketingInput) marketingInput.checked = !!saved.marketing;
+      }
+      if (modal) modal.classList.add("is-open");
+    }
+    function closeModal() { if (modal) modal.classList.remove("is-open"); }
+
+    function accept(all) {
+      var marketing = all ? true : (marketingInput ? marketingInput.checked : false);
+      write({
+        necessary: true,
+        preferences: all ? true : (prefInput ? prefInput.checked : false),
+        statistics: all ? true : (statInput ? statInput.checked : false),
+        marketing: marketing,
+        ts: Date.now()
+      });
+      applyUetConsent(marketing);
+      hide();
+      closeModal();
+    }
+    function reject() {
+      write({ necessary: true, preferences: false, statistics: false, marketing: false, ts: Date.now() });
+      applyUetConsent(false);
+      hide();
+      closeModal();
+    }
+
+    var saved = read();
+    if (saved) { hide(); applyUetConsent(!!saved.marketing); }
+    else { banner.removeAttribute("hidden"); }
+
+    bind("cookie-accept", function () { accept(true); });
+    bind("cookie-reject", reject);
+    bind("cookie-config", openModal);
+    bind("cookie-save", function () { accept(false); });
+    bind("cookie-modal-close", closeModal);
+    bind("cookie-modal-accept", function () { accept(true); });
+    if (modal) modal.addEventListener("click", function (e) { if (e.target === modal) closeModal(); });
+
+    function bind(id, fn) {
+      var el = document.getElementById(id);
+      if (el) el.addEventListener("click", fn);
+    }
+  }
+
+  function initContactForm() {
+    var form = document.getElementById("contact-form");
+    if (!form) return;
+    var modal = document.getElementById("thanks-modal");
+    var submit = form.querySelector('[type="submit"]');
+    var captchaQ = document.getElementById("captcha-q");
+    var captchaInput = form.querySelector('[name="captcha"]');
+    var consent = form.querySelector('[name="consent"]');
+    var sum = 0;
+
+    function newCaptcha() {
+      var a = Math.floor(Math.random() * 8) + 1;
+      var b = Math.floor(Math.random() * 8) + 1;
+      sum = a + b;
+      if (captchaQ) captchaQ.textContent = a + " + " + b + " =";
+    }
+    newCaptcha();
+
+    function openThanks() { if (modal) modal.classList.add("is-open"); }
+    function closeThanks() { if (modal) modal.classList.remove("is-open"); }
+    var closeBtn = document.getElementById("thanks-close");
+    if (closeBtn) closeBtn.addEventListener("click", closeThanks);
+    if (modal) modal.addEventListener("click", function (e) { if (e.target === modal) closeThanks(); });
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (captchaInput) {
+        captchaInput.setCustomValidity(parseInt(captchaInput.value, 10) === sum ? "" : "La respuesta no es correcta.");
+      }
+      if (consent && !consent.checked) consent.setCustomValidity("Debes aceptar la política de privacidad.");
+      else if (consent) consent.setCustomValidity("");
+      if (!form.reportValidity()) return;
+      if (submit) submit.disabled = true;
+      form.reset();
+      newCaptcha();
+      openThanks();
+      if (submit) submit.disabled = false;
+    });
+  }
+
+  function initGlossary() {
+    var bar = document.querySelector(".glossary-letters");
+    var grid = document.getElementById("glossary-grid");
+    if (!bar || !grid) return;
+    var terms = grid.querySelectorAll(".term[data-letter]");
+    var buttons = bar.querySelectorAll(".gl-letter");
+    var empty = document.getElementById("glossary-empty");
+    if (!terms.length || !buttons.length) return;
+
+    function apply(letter) {
+      var shown = 0;
+      terms.forEach(function (t) {
+        var match = letter === "all" || t.getAttribute("data-letter") === letter;
+        t.classList.toggle("is-hidden", !match);
+        if (match) shown++;
+      });
+      buttons.forEach(function (b) {
+        var on = b.getAttribute("data-letter") === letter;
+        b.classList.toggle("is-active", on);
+        b.setAttribute("aria-pressed", on ? "true" : "false");
+      });
+      if (empty) empty.classList.toggle("is-hidden", shown !== 0);
+    }
+    buttons.forEach(function (b) {
+      b.addEventListener("click", function () { apply(b.getAttribute("data-letter")); });
+    });
+  }
+
+  function initSmoothAnchors() {
+    if (reduceMotion) return;
+    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+      var id = a.getAttribute("href").slice(1);
+      if (!id) return;
+      a.addEventListener("click", function (e) {
+        var target = document.getElementById(id);
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+  }
+})();

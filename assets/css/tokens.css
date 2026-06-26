@@ -1,0 +1,57 @@
+:root {
+
+  --brand: #047857;
+  --brand-strong: #065f46;
+  --brand-soft: #10b981;
+  --brand-tint: #ecfdf5;
+  --brand-rgb: 4, 120, 87;
+
+  --accent: #d97706;
+  --accent-soft: #f59e0b;
+  --accent-tint: #fffbeb;
+  --accent-rgb: 217, 119, 6;
+
+
+  --ink: #14201c;
+  --ink-soft: #3a463f;
+  --muted: #6b7770;
+  --line: #e4e8e3;
+  --line-soft: #eef2ec;
+  --surface: #ffffff;
+  --surface-2: #f7f9f5;
+  --surface-3: #eef2eb;
+
+  --bg: #f5f7f2;
+  --bg-rgb: 245, 247, 242;
+
+  --night: #0c1512;
+  --night-2: #14211c;
+  --night-rgb: 12, 21, 18;
+
+  --white: #ffffff;
+  --white-rgb: 255, 255, 255;
+
+
+  --ok: #15803d;
+  --warn: #b45309;
+
+
+  --font-head: "Sora", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Code", monospace;
+
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+
+
+  --radius-sm: 0.7rem;
+  --radius: 1.05rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2.2rem;
+  --shadow-sm: 0 4px 14px rgba(20, 32, 28, 0.06);
+  --shadow: 0 18px 40px rgba(20, 32, 28, 0.09);
+  --shadow-lg: 0 30px 70px rgba(20, 32, 28, 0.15);
+
+  --container: 1180px;
+}

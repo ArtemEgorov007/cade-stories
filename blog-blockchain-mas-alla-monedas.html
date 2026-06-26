@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.className += ' js';</script>
+<script>
+window.uetq = window.uetq || [];
+window.uetq.push('consent', 'default', { ad_storage: 'denied' });
+</script>
+<title>El blockchain más allá de las monedas — Cade Stories</title>
+<meta name="description" content="La cadena de bloques se asocia a las criptomonedas, pero su valor real está en registrar y verificar información de forma fiable. Ejemplos cotidianos explicados.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Cade Stories">
+<meta name="theme-color" content="#000000">
+<link rel="canonical" href="https://artemegorov007.github.io/cade-stories/blog-blockchain-mas-alla-monedas.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Cade Stories">
+<meta property="og:title" content="El blockchain más allá de las monedas — Cade Stories">
+<meta property="og:description" content="La cadena de bloques se asocia a las criptomonedas, pero su valor real está en registrar y verificar información de forma fiable. Ejemplos cotidianos explicados.">
+<meta property="og:url" content="https://artemegorov007.github.io/cade-stories/blog-blockchain-mas-alla-monedas.html">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23000000'/%3E%3Crect x='1' y='1' width='62' height='62' rx='13' fill='none' stroke='%23ffffff' stroke-opacity='.25' stroke-width='2'/%3E%3Cpath d='M20 22 h24 a4 4 0 0 1 4 4 v12 a4 4 0 0 1 -4 4 h-12 l-8 8 v-8 a4 4 0 0 1 -4 -4 v-12 a4 4 0 0 1 4 -4 z' fill='%23ffffff'/%3E%3Ccircle cx='32' cy='32' r='4.5' fill='%23000000'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Sora:wght@500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/theme-lz.css">
+<link rel="stylesheet" href="assets/css/animations.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="container topbar__inner">
+    <a class="brand" href="index.html" aria-label="Cade Stories — inicio">
+      <span class="brand__mark" aria-hidden="true"><svg class="brand-logo" viewBox="0 0 32 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cade Stories"><rect class="brand-logo__frame" x="7" y="3" width="18" height="34" rx="9" fill="none" stroke="currentColor" stroke-width="1.35" opacity="0.9"/><line class="brand-logo__bar brand-logo__bar--1" x1="11" y1="13" x2="21" y2="13" stroke="currentColor" stroke-width="1.45" stroke-linecap="round"/><line class="brand-logo__bar brand-logo__bar--2" x1="11" y1="20" x2="24" y2="20" stroke="currentColor" stroke-width="1.45" stroke-linecap="round"/><line class="brand-logo__bar brand-logo__bar--3" x1="11" y1="27" x2="17" y2="27" stroke="currentColor" stroke-width="1.45" stroke-linecap="round"/></svg></span>      <span class="brand__name">Cade <b>Stories</b></span>
+    </a>
+
+    <button class="burger" id="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav" id="nav" aria-label="Navegación principal">
+              <a class="nav__link" href="index.html">Inicio</a>
+              <a class="nav__link" href="aprender.html">Aprender</a>
+              <a class="nav__link" href="glosario.html">Glosario</a>
+              <a class="nav__link" href="blog.html">Blog</a>
+              <a class="nav__link" href="sobre-nosotros.html">Quiénes somos</a>
+              <a class="nav__link" href="contacto.html">Contacto</a>
+            <a class="btn btn--primary nav__cta" href="aprender.html">Empezar a aprender</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <section class="section">
+    <div class="container">
+      <article class="article">
+        <header class="article__header" data-reveal>
+          <nav class="breadcrumbs" aria-label="Migas de pan">
+            <a href="index.html">Inicio</a> <span>/</span>
+            <a href="blog.html">Blog</a> <span>/</span>
+            <span>Blockchain</span>
+          </nav>
+          <h1 class="article__title">El blockchain más allá de las monedas</h1>
+          <div class="article__meta">
+            <span><span class="licon licon--calendar3" aria-hidden="true"><i class="licon__bi bi bi-calendar3"></i></span> 12 jun 2026</span>
+            <span><span class="licon licon--clock" aria-hidden="true"><i class="licon__bi bi bi-clock"></i></span> 6 min de lectura</span>
+            <span><span class="licon licon--tag" aria-hidden="true"><i class="licon__bi bi bi-tag"></i></span> Blockchain</span>
+          </div>
+          <div class="article__media cover cover--chain" role="img" aria-label="Ilustración sobre la trazabilidad de un producto"><span class="licon licon--diagram-3" aria-hidden="true"><i class="licon__bi bi bi-diagram-3"></i></span></div>        </header>
+
+        <div class="article__body" data-reveal>
+          <p>
+            Cuando se habla de blockchain, casi siempre aparece la palabra “criptomoneda”.
+            Es normal: fue su primer uso famoso. Pero reducir la tecnología a eso es como
+            pensar que internet solo sirve para enviar correos. La idea de fondo —guardar
+            información de forma compartida y difícil de manipular— tiene muchos más usos.
+          </p>
+
+          <h2>La función esencial: un registro de confianza</h2>
+          <p>
+            En el centro de todo está una idea sencilla: un registro que muchas partes comparten
+            y en el que ninguna puede cambiar el pasado sin que las demás se enteren. Eso resulta
+            útil siempre que distintos actores necesitan ponerse de acuerdo sobre “qué pasó y cuándo”.
+          </p>
+
+          <h2>Ejemplos cotidianos</h2>
+          <h3>1. Seguir el rastro de un producto</h3>
+          <p>
+            Imagina un alimento que viaja del campo a tu mesa pasando por varios intermediarios.
+            Si cada paso se anota en una cadena compartida, se puede comprobar de dónde viene
+            y por dónde ha pasado. Esto es lo que se llama <b>trazabilidad</b>.
+          </p>
+
+          <h3>2. Comprobar que un documento es auténtico</h3>
+          <p>
+            Un título académico o un certificado puede registrarse de forma que cualquiera
+            pueda verificar que no ha sido falsificado, sin tener que llamar a la institución que lo emitió.
+          </p>
+
+          <h3>3. Automatizar acuerdos</h3>
+          <p>
+            Los llamados <b>contratos inteligentes</b> son programas que se ejecutan solos cuando
+            se cumplen ciertas condiciones. Por ejemplo, liberar un acceso únicamente cuando ambas
+            partes han confirmado algo.
+          </p>
+
+          <div class="callout"><span class="licon licon--lightbulb" aria-hidden="true"><i class="licon__bi bi bi-lightbulb"></i></span><p>La pregunta clave no es “¿puedo usar blockchain?”, sino “¿necesito que varias partes que no se fían del todo compartan un mismo registro?”. Si la respuesta es no, una base de datos normal suele bastar.</p></div>
+
+          <h2>En resumen</h2>
+          <p>
+            El blockchain es, ante todo, una manera de mantener registros compartidos y fiables.
+            Las monedas digitales son solo una aplicación. Entender esta diferencia ayuda a ver
+            la tecnología con más claridad y menos ruido.
+          </p>
+          <p>
+            Si quieres repasar los conceptos que aparecen aquí, echa un vistazo a nuestra
+            <a href="aprender.html#blockchain">guía paso a paso</a> o al <a href="glosario.html">glosario</a>.
+          </p>
+        </div>
+
+        <div class="cta-band mt-4" data-reveal>
+          <h2>Sigue aprendiendo</h2>
+          <p>Vuelve al blog para leer más artículos divulgativos.</p>
+          <a class="btn btn--light" href="blog.html"><span class="licon licon--arrow-left licon--on-light" aria-hidden="true"><i class="licon__bi bi bi-arrow-left"></i></span> Volver al blog</a>
+        </div>
+      </article>
+    </div>
+  </section>
+</main>
+﻿<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a class="brand" href="index.html">
+          <span class="brand__mark" aria-hidden="true"><svg class="brand-logo" viewBox="0 0 32 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cade Stories"><rect class="brand-logo__frame" x="7" y="3" width="18" height="34" rx="9" fill="none" stroke="currentColor" stroke-width="1.35" opacity="0.9"/><line class="brand-logo__bar brand-logo__bar--1" x1="11" y1="13" x2="21" y2="13" stroke="currentColor" stroke-width="1.45" stroke-linecap="round"/><line class="brand-logo__bar brand-logo__bar--2" x1="11" y1="20" x2="24" y2="20" stroke="currentColor" stroke-width="1.45" stroke-linecap="round"/><line class="brand-logo__bar brand-logo__bar--3" x1="11" y1="27" x2="17" y2="27" stroke="currentColor" stroke-width="1.45" stroke-linecap="round"/></svg></span>          <span class="brand__name">Cade <b>Stories</b></span>
+        </a>
+        <p class="footer__about">
+          Un proyecto educativo independiente que cuenta, en lenguaje claro, cómo funcionan
+          el blockchain, la inteligencia artificial y la seguridad digital. Solo conocimiento,
+          nada que comprar.
+        </p>
+        <div class="footer__socials" aria-label="Redes sociales">
+          <a href="#" aria-label="Boletín por correo"><span class="licon licon--envelope" aria-hidden="true"><i class="licon__bi bi bi-envelope"></i></span></a>
+          <a href="#" aria-label="Canal de divulgación"><span class="licon licon--rss" aria-hidden="true"><i class="licon__bi bi bi-rss"></i></span></a>
+          <a href="#" aria-label="Comunidad"><span class="licon licon--people" aria-hidden="true"><i class="licon__bi bi bi-people"></i></span></a>
+        </div>
+      </div>
+
+      <div class="footer__col">
+        <h4>Contenido</h4>
+        <ul>
+          <li><a href="aprender.html">Guía de aprendizaje</a></li>
+          <li><a href="glosario.html">Glosario</a></li>
+          <li><a href="blog.html">Blog y novedades</a></li>
+          <li><a href="sobre-nosotros.html">Quiénes somos</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacidad.html">Política de privacidad</a></li>
+          <li><a href="terminos.html">Términos de uso</a></li>
+          <li><a href="cookies.html">Política de cookies</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Dónde estamos</h4>
+        <ul class="footer__contact">
+          <li><span class="contact-info__icon"><span class="licon licon--geo-alt" aria-hidden="true"><i class="licon__bi bi bi-geo-alt"></i></span></span><span>Carrer de Pau Claris 138, 4ª planta, 08009 Barcelona, España</span></li>
+          <li><span class="contact-info__icon"><span class="licon licon--envelope" aria-hidden="true"><i class="licon__bi bi bi-envelope"></i></span></span><a href="mailto:hola@cadestories.com">hola@cadestories.com</a></li>
+          <li><span class="contact-info__icon"><span class="licon licon--telephone" aria-hidden="true"><i class="licon__bi bi bi-telephone"></i></span></span><a href="tel:+34932451870">+34 932 45 18 70</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>&copy; 2026 Cade Stories. Contenido con fines educativos e informativos.</span>
+      <div class="footer__bottom-links">
+        <a href="privacidad.html">Privacidad</a>
+        <a href="terminos.html">Términos</a>
+        <a href="cookies.html">Cookies</a>
+      </div>
+    </div>
+  </div>
+<div class="cookie" id="cookie-banner" role="dialog" aria-live="polite" aria-label="Consentimiento de cookies" hidden>
+    <div class="cookie__text">
+      <strong>Usamos cookies</strong>
+      <p>Utilizamos cookies necesarias para que el sitio funcione y, con tu permiso, cookies de preferencias, estadística y marketing (Microsoft Advertising / UET). Consulta nuestra <a href="cookies.html" style="color:var(--accent-soft)">política de cookies</a> y la <a href="privacidad.html" style="color:var(--accent-soft)">política de privacidad</a>.</p>
+    </div>
+    <div class="cookie__actions">
+      <button class="cookie__btn cookie__btn--reject" id="cookie-reject" type="button">Solo necesarias</button>
+      <button class="cookie__btn cookie__btn--config" id="cookie-config" type="button">Configurar</button>
+      <button class="cookie__btn cookie__btn--accept" id="cookie-accept" type="button">Aceptar todas</button>
+    </div>
+  </div>
+<div class="modal" id="cookie-modal" aria-hidden="true">
+    <div class="modal__dialog" role="dialog" aria-modal="true" aria-label="Configuración de cookies">
+      <h3>Configuración de cookies</h3>
+      <p style="color:var(--muted)">Puedes activar o desactivar las categorías opcionales. Las cookies necesarias siempre están activas.</p>
+
+      <label class="modal__opt">
+        <span><strong>Necesarias</strong><br><small>Imprescindibles para el funcionamiento básico del sitio.</small></span>
+        <input type="checkbox" checked disabled>
+      </label>
+      <label class="modal__opt">
+        <span><strong>Preferencias</strong><br><small>Recuerdan tus ajustes, como el idioma o la región.</small></span>
+        <input type="checkbox" id="ck-pref">
+      </label>
+      <label class="modal__opt">
+        <span><strong>Estadística</strong><br><small>Nos ayudan a entender, de forma anónima, qué contenidos son útiles.</small></span>
+        <input type="checkbox" id="ck-stat">
+      </label>
+      <label class="modal__opt">
+        <span><strong>Marketing / Microsoft UET</strong><br><small>Medición de campañas en Microsoft Advertising (UET). Permite conversiones y remarketing solo si las aceptas.</small></span>
+        <input type="checkbox" id="ck-marketing">
+      </label>
+
+      <div class="modal__footer">
+        <button class="btn btn--ghost" id="cookie-modal-close" type="button">Cerrar</button>
+        <button class="btn btn--ghost" id="cookie-save" type="button">Guardar selección</button>
+        <button class="btn btn--primary" id="cookie-modal-accept" type="button">Aceptar todas</button>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

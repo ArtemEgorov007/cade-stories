@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.className += ' js';</script>
+<script>
+window.uetq = window.uetq || [];
+window.uetq.push('consent', 'default', { ad_storage: 'denied' });
+</script>
+<title>Aprender blockchain, IA y seguridad digital — Cade Stories</title>
+<meta name="description" content="Guía sencilla para entender desde cero la tecnología blockchain, la inteligencia artificial y la seguridad digital. Conceptos explicados con ejemplos cotidianos, para principiantes.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Cade Stories">
+<meta name="theme-color" content="#000000">
+<link rel="canonical" href="https://artemegorov007.github.io/cade-stories/aprender.html">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cade Stories">
+<meta property="og:title" content="Aprender blockchain, IA y seguridad digital — Cade Stories">
+<meta property="og:description" content="Guía sencilla para entender desde cero la tecnología blockchain, la inteligencia artificial y la seguridad digital. Conceptos explicados con ejemplos cotidianos, para principiantes.">
+<meta property="og:url" content="https://artemegorov007.github.io/cade-stories/aprender.html">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23000000'/%3E%3Crect x='1' y='1' width='62' height='62' rx='13' fill='none' stroke='%23ffffff' stroke-opacity='.25' stroke-width='2'/%3E%3Cpath d='M20 22 h24 a4 4 0 0 1 4 4 v12 a4 4 0 0 1 -4 4 h-12 l-8 8 v-8 a4 4 0 0 1 -4 -4 v-12 a4 4 0 0 1 4 -4 z' fill='%23ffffff'/%3E%3Ccircle cx='32' cy='32' r='4.5' fill='%23000000'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Sora:wght@500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/theme-lz.css">
+<link rel="stylesheet" href="assets/css/animations.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="container topbar__inner">
+    <a class="brand" href="index.html" aria-label="Cade Stories — inicio">
+      <span class="brand__mark" aria-hidden="true"><svg class="brand-logo" viewBox="0 0 32 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cade Stories"><rect class="brand-logo__frame" x="7" y="3" width="18" height="34" rx="9" fill="none" stroke="currentColor" stroke-width="1.35" opacity="0.9"/><line class="brand-logo__bar brand-logo__bar--1" x1="11" y1="13" x2="21" y2="13" stroke="currentColor" stroke-width="1.45" stroke-linecap="round"/><line class="brand-logo__bar brand-logo__bar--2" x1="11" y1="20" x2="24" y2="20" stroke="currentColor" stroke-width="1.45" stroke-linecap="round"/><line class="brand-logo__bar brand-logo__bar--3" x1="11" y1="27" x2="17" y2="27" stroke="currentColor" stroke-width="1.45" stroke-linecap="round"/></svg></span>      <span class="brand__name">Cade <b>Stories</b></span>
+    </a>
+
+    <button class="burger" id="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav" id="nav" aria-label="Navegación principal">
+              <a class="nav__link" href="index.html">Inicio</a>
+              <a class="nav__link is-active" href="aprender.html">Aprender</a>
+              <a class="nav__link" href="glosario.html">Glosario</a>
+              <a class="nav__link" href="blog.html">Blog</a>
+              <a class="nav__link" href="sobre-nosotros.html">Quiénes somos</a>
+              <a class="nav__link" href="contacto.html">Contacto</a>
+            <a class="btn btn--primary nav__cta" href="aprender.html">Empezar a aprender</a>
+    </nav>
+  </div>
+</header>
+<main>
+
+  <section class="page-hero">
+    <div class="container" data-reveal="group">
+      <span class="eyebrow"><span class="licon licon--compass" aria-hidden="true"><i class="licon__bi bi bi-compass"></i></span> Guía para principiantes</span>
+      <h1 class="page-hero__title">Aprende a tu ritmo</h1>
+      <p class="page-hero__lead">
+        Una guía sin prisas y sin tecnicismos sobre los tres temas de Cade Stories.
+        Cada apartado desarrolla una sola idea con ejemplos. Puedes leerla entera
+        o saltar directamente al tema que te interese.
+      </p>
+    </div>
+  </section>
+
+  <section class="section--tight">
+    <div class="container">
+      <nav class="toc" data-reveal aria-label="Índice de la guía">
+        <a href="#blockchain">1. Blockchain</a>
+        <a href="#ia">2. Inteligencia artificial</a>
+        <a href="#seguridad">3. Seguridad digital</a>
+      </nav>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:1rem">
+    <div class="container">
+      <div class="guide" data-reveal="group">
+
+        <article class="guide__block" id="blockchain">
+          <h2><span class="licon licon--diagram-3" aria-hidden="true"><i class="licon__bi bi bi-diagram-3"></i></span> Blockchain: un registro compartido difícil de manipular</h2>
+          <p>
+            La <b>cadena de bloques</b> (<i>blockchain</i>) es un historial digital que crece
+            por etapas. Cada etapa —un <b>bloque</b>— agrupa datos y queda unida a la anterior,
+            como las páginas de un cuaderno numeradas que no se pueden reordenar sin dejar rastro.
+          </p>
+          <p>
+            Lo distintivo no es solo el formato, sino que muchas copias del mismo cuaderno viven
+            en ordenadores distintos. Si alguien intenta cambiar una página antigua en su copia,
+            las demás versiones ya no coinciden y la red descarta ese intento.
+          </p>
+          <h3>La huella de cada bloque (hash)</h3>
+          <p>
+            Cada bloque incluye un <b>hash</b>: un código breve calculado a partir de su contenido.
+            Modificar una sola cifra cambia por completo esa huella. Como el bloque siguiente
+            guarda la huella del previo, alterar el pasado rompe toda la secuencia posterior.
+          </p>
+          <h3>Aplicaciones más allá de las criptomonedas</h3>
+          <ul class="feature-list">
+            <li><span class="licon licon--box-seam" aria-hidden="true"><i class="licon__bi bi bi-box-seam"></i></span><span><b>Logística:</b> documentar de dónde sale un producto y qué paradas hace hasta llegar al consumidor.</span></li>
+            <li><span class="licon licon--file-earmark-check" aria-hidden="true"><i class="licon__bi bi bi-file-earmark-check"></i></span><span><b>Títulos y certificados:</b> verificar en línea que un diploma o contrato no ha sido falsificado.</span></li>
+            <li><span class="licon licon--collection" aria-hidden="true"><i class="licon__bi bi bi-collection"></i></span><span><b>Registros abiertos:</b> mantener actas o inventarios en los que varias partes confían sin depender de un único intermediario.</span></li>
+          </ul>
+          <div class="callout"><span class="licon licon--lightbulb" aria-hidden="true"><i class="licon__bi bi bi-lightbulb"></i></span><p><b>Analogía:</b> imagina un acta vecinal donde cada nueva decisión se firma por varias personas y todos guardan una copia. Cambiar una hoja antigua exigiría convencer a la mayoría y volver a firmar todo lo posterior.</p></div>
+        </article>
+
+        <article class="guide__block" id="ia">
+          <h2><span class="licon licon--cpu" aria-hidden="true"><i class="licon__bi bi bi-cpu"></i></span> Inteligencia artificial: aprender a partir de ejemplos</h2>
+          <p>
+            La <b>inteligencia artificial</b> (IA) es un conjunto de técnicas que permiten a un
+            programa realizar tareas que asociamos a la inteligencia humana: reconocer imágenes,
+            entender texto o hacer recomendaciones. La mayoría de la IA actual aprende a partir
+            de <b>muchos ejemplos</b>, no de reglas escritas a mano.
+          </p>
+          <h3>¿Qué significa “entrenar” un modelo?</h3>
+          <p>
+            Entrenar es mostrarle al sistema miles o millones de ejemplos para que detecte
+            patrones. Si le enseñas muchas fotos de gatos y de perros, aprende a distinguirlos.
+            No “entiende” como una persona: calcula probabilidades a partir de lo que ha visto.
+          </p>
+          <h3>Por qué a veces se equivoca con seguridad</h3>
+          <p>
+            Un modelo puede dar una respuesta incorrecta con un tono muy convincente. Esto ocurre
+            porque genera lo que estadísticamente parece probable, no una verdad comprobada. Por
+            eso conviene verificar siempre los datos importantes en fuentes fiables.
+          </p>
+          <ul class="feature-list">
+            <li><span class="licon licon--images" aria-hidden="true"><i class="licon__bi bi bi-images"></i></span><span><b>Datos:</b> la calidad de lo que aprende depende de los ejemplos con los que se entrena.</span></li>
+            <li><span class="licon licon--exclamation-triangle" aria-hidden="true"><i class="licon__bi bi bi-exclamation-triangle"></i></span><span><b>Sesgos:</b> si los datos están desequilibrados, el resultado también lo estará.</span></li>
+            <li><span class="licon licon--person-check" aria-hidden="true"><i class="licon__bi bi bi-person-check"></i></span><span><b>Supervisión:</b> la IA ayuda, pero la decisión final debería seguir siendo humana.</span></li>
+          </ul>
+          <div class="callout"><span class="licon licon--lightbulb" aria-hidden="true"><i class="licon__bi bi bi-lightbulb"></i></span><p><b>Analogía:</b> es como un estudiante que ha leído muchísimos libros: responde rápido y casi siempre acierta, pero a veces mezcla cosas y hay que comprobarlo.</p></div>
+        </article>
+
+        <article class="guide__block" id="seguridad">
+          <h2><span class="licon licon--shield-lock" aria-hidden="true"><i class="licon__bi bi bi-shield-lock"></i></span> Seguridad digital: hábitos que marcan la diferencia</h2>
+          <p>
+            La <b>seguridad digital</b> es el conjunto de hábitos y herramientas para proteger tus
+            cuentas, tus dispositivos y tu información. No hace falta ser experto: con unos pocos
+            cambios reduces muchísimo el riesgo.
+          </p>
+          <h3>Contraseñas y verificación en dos pasos</h3>
+          <p>
+            Usa contraseñas largas y distintas en cada servicio, idealmente con un gestor de
+            contraseñas. Activa la <b>verificación en dos pasos (2FA)</b>: aunque alguien
+            descubra tu clave, necesitará además un código de tu móvil para entrar.
+          </p>
+          <h3>Cómo reconocer el phishing</h3>
+          <p>
+            El <b>phishing</b> son mensajes que imitan a una empresa de confianza para que pinches
+            un enlace o entregues tus datos. Desconfía de las prisas (“tu cuenta se cerrará hoy”),
+            revisa la dirección real del remitente y, ante la duda, entra escribiendo tú la web.
+          </p>
+          <ul class="feature-list">
+            <li><span class="licon licon--key" aria-hidden="true"><i class="licon__bi bi bi-key"></i></span><span><b>Gestor de contraseñas:</b> recuerda claves seguras por ti.</span></li>
+            <li><span class="licon licon--phone" aria-hidden="true"><i class="licon__bi bi bi-phone"></i></span><span><b>2FA:</b> una segunda barrera muy difícil de saltar.</span></li>
+            <li><span class="licon licon--arrow-repeat" aria-hidden="true"><i class="licon__bi bi bi-arrow-repeat"></i></span><span><b>Actualizaciones:</b> instalarlas cierra fallos que otros podrían aprovechar.</span></li>
+          </ul>
+          <div class="callout"><span class="licon licon--info-circle" aria-hidden="true"><i class="licon__bi bi bi-info-circle"></i></span><p>Recuerda: este material es solo formativo. No sustituye asesoramiento profesional; su objetivo es ayudarte a entender mejor la tecnología.</p></div>
+        </article>
+
+      </div>
+
+      <div class="cta-band mt-4" data-reveal>
+        <h2>¿Algún concepto sigue sin estar claro?</h2>
+        <p>Consulta el glosario: cada entrada resume una idea en pocas líneas.</p>
+        <a class="btn btn--light" href="glosario.html"><span class="licon licon--journal-text licon--on-light" aria-hidden="true"><i class="licon__bi bi bi-journal-text"></i></span> Abrir el glosario</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+﻿<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a class="brand" href="index.html">
+          <span class="brand__mark" aria-hidden="true"><svg class="brand-logo" viewBox="0 0 32 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cade Stories"><rect class="brand-logo__frame" x="7" y="3" width="18" height="34" rx="9" fill="none" stroke="currentColor" stroke-width="1.35" opacity="0.9"/><line class="brand-logo__bar brand-logo__bar--1" x1="11" y1="13" x2="21" y2="13" stroke="currentColor" stroke-width="1.45" stroke-linecap="round"/><line class="brand-logo__bar brand-logo__bar--2" x1="11" y1="20" x2="24" y2="20" stroke="currentColor" stroke-width="1.45" stroke-linecap="round"/><line class="brand-logo__bar brand-logo__bar--3" x1="11" y1="27" x2="17" y2="27" stroke="currentColor" stroke-width="1.45" stroke-linecap="round"/></svg></span>          <span class="brand__name">Cade <b>Stories</b></span>
+        </a>
+        <p class="footer__about">
+          Un proyecto educativo independiente que cuenta, en lenguaje claro, cómo funcionan
+          el blockchain, la inteligencia artificial y la seguridad digital. Solo conocimiento,
+          nada que comprar.
+        </p>
+        <div class="footer__socials" aria-label="Redes sociales">
+          <a href="#" aria-label="Boletín por correo"><span class="licon licon--envelope" aria-hidden="true"><i class="licon__bi bi bi-envelope"></i></span></a>
+          <a href="#" aria-label="Canal de divulgación"><span class="licon licon--rss" aria-hidden="true"><i class="licon__bi bi bi-rss"></i></span></a>
+          <a href="#" aria-label="Comunidad"><span class="licon licon--people" aria-hidden="true"><i class="licon__bi bi bi-people"></i></span></a>
+        </div>
+      </div>
+
+      <div class="footer__col">
+        <h4>Contenido</h4>
+        <ul>
+          <li><a href="aprender.html">Guía de aprendizaje</a></li>
+          <li><a href="glosario.html">Glosario</a></li>
+          <li><a href="blog.html">Blog y novedades</a></li>
+          <li><a href="sobre-nosotros.html">Quiénes somos</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacidad.html">Política de privacidad</a></li>
+          <li><a href="terminos.html">Términos de uso</a></li>
+          <li><a href="cookies.html">Política de cookies</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Dónde estamos</h4>
+        <ul class="footer__contact">
+          <li><span class="contact-info__icon"><span class="licon licon--geo-alt" aria-hidden="true"><i class="licon__bi bi bi-geo-alt"></i></span></span><span>Carrer de Pau Claris 138, 4ª planta, 08009 Barcelona, España</span></li>
+          <li><span class="contact-info__icon"><span class="licon licon--envelope" aria-hidden="true"><i class="licon__bi bi bi-envelope"></i></span></span><a href="mailto:hola@cadestories.com">hola@cadestories.com</a></li>
+          <li><span class="contact-info__icon"><span class="licon licon--telephone" aria-hidden="true"><i class="licon__bi bi bi-telephone"></i></span></span><a href="tel:+34932451870">+34 932 45 18 70</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>&copy; 2026 Cade Stories. Contenido con fines educativos e informativos.</span>
+      <div class="footer__bottom-links">
+        <a href="privacidad.html">Privacidad</a>
+        <a href="terminos.html">Términos</a>
+        <a href="cookies.html">Cookies</a>
+      </div>
+    </div>
+  </div>
+<div class="cookie" id="cookie-banner" role="dialog" aria-live="polite" aria-label="Consentimiento de cookies" hidden>
+    <div class="cookie__text">
+      <strong>Usamos cookies</strong>
+      <p>Utilizamos cookies necesarias para que el sitio funcione y, con tu permiso, cookies de preferencias, estadística y marketing (Microsoft Advertising / UET). Consulta nuestra <a href="cookies.html" style="color:var(--accent-soft)">política de cookies</a> y la <a href="privacidad.html" style="color:var(--accent-soft)">política de privacidad</a>.</p>
+    </div>
+    <div class="cookie__actions">
+      <button class="cookie__btn cookie__btn--reject" id="cookie-reject" type="button">Solo necesarias</button>
+      <button class="cookie__btn cookie__btn--config" id="cookie-config" type="button">Configurar</button>
+      <button class="cookie__btn cookie__btn--accept" id="cookie-accept" type="button">Aceptar todas</button>
+    </div>
+  </div>
+<div class="modal" id="cookie-modal" aria-hidden="true">
+    <div class="modal__dialog" role="dialog" aria-modal="true" aria-label="Configuración de cookies">
+      <h3>Configuración de cookies</h3>
+      <p style="color:var(--muted)">Puedes activar o desactivar las categorías opcionales. Las cookies necesarias siempre están activas.</p>
+
+      <label class="modal__opt">
+        <span><strong>Necesarias</strong><br><small>Imprescindibles para el funcionamiento básico del sitio.</small></span>
+        <input type="checkbox" checked disabled>
+      </label>
+      <label class="modal__opt">
+        <span><strong>Preferencias</strong><br><small>Recuerdan tus ajustes, como el idioma o la región.</small></span>
+        <input type="checkbox" id="ck-pref">
+      </label>
+      <label class="modal__opt">
+        <span><strong>Estadística</strong><br><small>Nos ayudan a entender, de forma anónima, qué contenidos son útiles.</small></span>
+        <input type="checkbox" id="ck-stat">
+      </label>
+      <label class="modal__opt">
+        <span><strong>Marketing / Microsoft UET</strong><br><small>Medición de campañas en Microsoft Advertising (UET). Permite conversiones y remarketing solo si las aceptas.</small></span>
+        <input type="checkbox" id="ck-marketing">
+      </label>
+
+      <div class="modal__footer">
+        <button class="btn btn--ghost" id="cookie-modal-close" type="button">Cerrar</button>
+        <button class="btn btn--ghost" id="cookie-save" type="button">Guardar selección</button>
+        <button class="btn btn--primary" id="cookie-modal-accept" type="button">Aceptar todas</button>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

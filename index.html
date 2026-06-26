@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es" class="page-home">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.className += ' js';</script>
+<script>
+window.uetq = window.uetq || [];
+window.uetq.push('consent', 'default', { ad_storage: 'denied' });
+</script>
+<title>Cade Stories — Blockchain, inteligencia artificial y seguridad digital explicados con claridad</title>
+<meta name="description" content="Portal educativo que explica, con ejemplos sencillos, cómo funcionan el blockchain, la inteligencia artificial y la seguridad digital. Solo conocimiento: aquí no se compra ni se vende nada.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Cade Stories">
+<meta name="theme-color" content="#000000">
+<link rel="canonical" href="https://artemegorov007.github.io/cade-stories/index.html">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cade Stories">
+<meta property="og:title" content="Cade Stories — Blockchain, inteligencia artificial y seguridad digital explicados con claridad">
+<meta property="og:description" content="Portal educativo que explica, con ejemplos sencillos, cómo funcionan el blockchain, la inteligencia artificial y la seguridad digital. Solo conocimiento: aquí no se compra ni se vende nada.">
+<meta property="og:url" content="https://artemegorov007.github.io/cade-stories/index.html">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23000000'/%3E%3Crect x='1' y='1' width='62' height='62' rx='13' fill='none' stroke='%23ffffff' stroke-opacity='.25' stroke-width='2'/%3E%3Cpath d='M20 22 h24 a4 4 0 0 1 4 4 v12 a4 4 0 0 1 -4 4 h-12 l-8 8 v-8 a4 4 0 0 1 -4 -4 v-12 a4 4 0 0 1 4 -4 z' fill='%23ffffff'/%3E%3Ccircle cx='32' cy='32' r='4.5' fill='%23000000'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Sora:wght@500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/theme-lz.css">
+<link rel="stylesheet" href="assets/css/animations.css">
+<link rel="stylesheet" href="assets/css/theme-lz-home.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="container topbar__inner">
+    <a class="brand" href="index.html" aria-label="Cade Stories — inicio">
+      <span class="brand__mark" aria-hidden="true"><svg class="brand-logo" viewBox="0 0 32 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cade Stories"><rect class="brand-logo__frame" x="7" y="3" width="18" height="34" rx="9" fill="none" stroke="currentColor" stroke-width="1.35" opacity="0.9"/><line class="brand-logo__bar brand-logo__bar--1" x1="11" y1="13" x2="21" y2="13" stroke="currentColor" stroke-width="1.45" stroke-linecap="round"/><line class="brand-logo__bar brand-logo__bar--2" x1="11" y1="20" x2="24" y2="20" stroke="currentColor" stroke-width="1.45" stroke-linecap="round"/><line class="brand-logo__bar brand-logo__bar--3" x1="11" y1="27" x2="17" y2="27" stroke="currentColor" stroke-width="1.45" stroke-linecap="round"/></svg></span>      <span class="brand__name">Cade <b>Stories</b></span>
+    </a>
+
+    <button class="burger" id="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav" id="nav" aria-label="Navegación principal">
+              <a class="nav__link is-active" href="index.html">Inicio</a>
+              <a class="nav__link" href="aprender.html">Aprender</a>
+              <a class="nav__link" href="glosario.html">Glosario</a>
+              <a class="nav__link" href="blog.html">Blog</a>
+              <a class="nav__link" href="sobre-nosotros.html">Quiénes somos</a>
+              <a class="nav__link" href="contacto.html">Contacto</a>
+            <a class="btn btn--primary nav__cta" href="aprender.html">Empezar a aprender</a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="hero hero--lz">
+    <div class="hero__canvas-wrap" id="lz-hero-canvas-wrap" aria-hidden="true">
+      <canvas id="lz-hero-canvas"></canvas>
+    </div>
+    <div class="hero__center" data-hero-intro>
+      <span class="hero__eyebrow">/// Divulgación tecnológica</span>
+      <h1 class="hero__title-lz">Tecnología explicada para personas<span class="hero__title-muted">no para expertos</span></h1>
+      <p class="hero__lead-lz">
+        Cade Stories explica, paso a paso, el blockchain, la inteligencia artificial y la seguridad digital.
+        Solo conocimiento: aquí no se compra ni se vende nada.
+      </p>
+      <div class="hero__actions">
+        <a class="btn btn--primary btn--lz" href="aprender.html">Empezar a aprender</a>
+        <a class="btn btn--ghost btn--lz" href="glosario.html">Ver el glosario</a>
+      </div>
+      <p class="hero__note"><span class="licon licon--shield-check" aria-hidden="true"><i class="licon__bi bi bi-shield-check"></i></span> Contenido neutral y gratuito</p>
+    </div>
+  </section>
+<section class="section--tight">
+    <div class="container">
+      <div class="stats" data-reveal="group">
+        <div class="stat"><div class="stat__num">3</div><div class="stat__label">áreas de conocimiento explicadas desde cero</div></div>
+        <div class="stat"><div class="stat__num">22</div><div class="stat__label">términos definidos en el glosario</div></div>
+        <div class="stat"><div class="stat__num">100%</div><div class="stat__label">gratuito y sin registro</div></div>
+        <div class="stat"><div class="stat__num">0</div><div class="stat__label">productos a la venta · solo divulgación</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="lz-marquee" aria-label="Temas del portal">
+    <div class="lz-marquee__viewport">
+      <div class="lz-marquee__track">
+        <span>Blockchain</span><span class="lz-marquee__dot">·</span><span>Inteligencia artificial</span><span class="lz-marquee__dot">·</span><span>Seguridad digital</span><span class="lz-marquee__dot">·</span><span>Glosario</span><span class="lz-marquee__dot">·</span><span>Smart contracts</span><span class="lz-marquee__dot">·</span><span>Wallets</span><span class="lz-marquee__dot">·</span><span>Verificación 2FA</span><span class="lz-marquee__dot">·</span><span>Modelos de IA</span><span class="lz-marquee__dot">·</span><span>Phishing</span><span class="lz-marquee__dot">·</span><span>Trazabilidad</span><span class="lz-marquee__dot">·</span><span>Prompts</span><span class="lz-marquee__dot">·</span><span>Criptomonedas</span><span class="lz-marquee__dot">·</span><span>Blockchain</span><span class="lz-marquee__dot">·</span><span>Inteligencia artificial</span><span class="lz-marquee__dot">·</span><span>Seguridad digital</span><span class="lz-marquee__dot">·</span><span>Glosario</span><span class="lz-marquee__dot">·</span><span>Smart contracts</span><span class="lz-marquee__dot">·</span><span>Wallets</span><span class="lz-marquee__dot">·</span><span>Verificación 2FA</span><span class="lz-marquee__dot">·</span><span>Modelos de IA</span><span class="lz-marquee__dot">·</span><span>Phishing</span><span class="lz-marquee__dot">·</span><span>Trazabilidad</span><span class="lz-marquee__dot">·</span><span>Prompts</span><span class="lz-marquee__dot">·</span><span>Criptomonedas</span><span class="lz-marquee__dot">·</span>      </div>
+    </div>
+  </section>
+
+<section class="section">
+    <div class="container">
+      <div class="section__head" data-reveal>
+        <span class="eyebrow"><span class="licon licon--grid-3x3-gap" aria-hidden="true"><i class="licon__bi bi bi-grid-3x3-gap"></i></span> Tres temas, una misma idea</span>
+        <h2 class="section__title">Entiende la tecnología que ya forma parte de tu vida</h2>
+        <p class="section__lead">Hemos dividido el contenido en tres áreas. Empieza por la que más te intrigue; todas se explican desde cero.</p>
+      </div>
+
+      <div class="pillars" data-reveal="group">
+        <article class="pillar">
+          <span class="idx">[01]</span>
+          <span class="pillar__icon"><span class="licon licon--diagram-3" aria-hidden="true"><i class="licon__bi bi bi-diagram-3"></i></span></span>
+          <h3>Blockchain</h3>
+          <p>Qué es la cadena de bloques, cómo se sellan los datos y para qué sirve más allá de las criptomonedas.</p>
+          <a class="pillar__more" href="aprender.html#blockchain">Explorar blockchain <span class="licon licon--arrow-right" aria-hidden="true"><i class="licon__bi bi bi-arrow-right"></i></span></a>
+        </article>
+        <article class="pillar">
+          <span class="idx">[02]</span>
+          <span class="pillar__icon pillar__icon--accent"><span class="licon licon--cpu" aria-hidden="true"><i class="licon__bi bi bi-cpu"></i></span></span>
+          <h3>Inteligencia artificial</h3>
+          <p>Cómo aprenden los modelos, qué pueden y qué no pueden hacer, y cómo usarlos con cabeza.</p>
+          <a class="pillar__more" href="aprender.html#ia">Explorar IA <span class="licon licon--arrow-right" aria-hidden="true"><i class="licon__bi bi bi-arrow-right"></i></span></a>
+        </article>
+        <article class="pillar">
+          <span class="idx">[03]</span>
+          <span class="pillar__icon pillar__icon--ink"><span class="licon licon--shield-lock" aria-hidden="true"><i class="licon__bi bi bi-shield-lock"></i></span></span>
+          <h3>Seguridad digital</h3>
+          <p>Contraseñas, verificación en dos pasos y hábitos sencillos para proteger tus cuentas y datos.</p>
+          <a class="pillar__more" href="aprender.html#seguridad">Explorar seguridad <span class="licon licon--arrow-right" aria-hidden="true"><i class="licon__bi bi bi-arrow-right"></i></span></a>
+        </article>
+      </div>
+    </div>
+  </section>
+<section class="section section--alt">
+    <div class="container split">
+      <div data-reveal="group">
+        <span class="eyebrow"><span class="licon licon--lightbulb" aria-hidden="true"><i class="licon__bi bi bi-lightbulb"></i></span> La idea en una frase</span>
+        <h2 class="section__title">Conocimiento abierto que cualquiera puede comprobar</h2>
+        <p>
+          Imagina un cuaderno donde muchas personas anotan lo que ocurre. Cada página nueva
+          incluye un resumen de la anterior, así que no se puede arrancar ni cambiar una hoja
+          sin que todos lo noten. Esa idea —datos compartidos y verificables— está detrás del
+          blockchain, y también de cómo entendemos hoy la inteligencia artificial y la seguridad.
+        </p>
+        <ul class="feature-list">
+          <li><span class="licon licon--check-circle" aria-hidden="true"><i class="licon__bi bi bi-check-circle"></i></span><span><b>Distribuido:</b> la información no depende de una sola empresa ni de un único servidor.</span></li>
+          <li><span class="licon licon--check-circle" aria-hidden="true"><i class="licon__bi bi bi-check-circle"></i></span><span><b>Verificable:</b> cualquiera puede revisar cómo se llegó a un resultado.</span></li>
+          <li><span class="licon licon--check-circle" aria-hidden="true"><i class="licon__bi bi bi-check-circle"></i></span><span><b>Transparente:</b> explicamos también los límites, no solo las virtudes.</span></li>
+        </ul>
+        <a class="btn btn--primary mt-3" href="aprender.html">Verlo con ejemplos <span class="licon licon--arrow-right" aria-hidden="true"><i class="licon__bi bi bi-arrow-right"></i></span></a>
+      </div>
+      <div class="split-visual split__media" data-reveal role="img" aria-label="Registro compartido verificable por varios nodos"><span class="split-visual__tag">/// VERIFICACIÓN</span><div class="split-visual__grid"><div class="split-visual__card"><span class="split-visual__icon"><span class="licon licon--diagram-3" aria-hidden="true"><i class="licon__bi bi bi-diagram-3"></i></span></span><span class="split-visual__label">Nodo A</span></div><div class="split-visual__card split-visual__card--core"><span class="split-visual__icon"><span class="licon licon--patch-check" aria-hidden="true"><i class="licon__bi bi bi-patch-check"></i></span></span><span class="split-visual__label">Registro</span></div><div class="split-visual__card"><span class="split-visual__icon"><span class="licon licon--diagram-3" aria-hidden="true"><i class="licon__bi bi bi-diagram-3"></i></span></span><span class="split-visual__label">Nodo B</span></div></div></div>    </div>
+  </section>
+<section class="section">
+    <div class="container">
+      <div class="section__head section__head--left" data-reveal>
+        <span class="eyebrow"><span class="licon licon--hash" aria-hidden="true"><i class="licon__bi bi bi-hash"></i></span> Lo que vas a entender</span>
+        <h2 class="section__title">Conceptos que cubrimos, sin tecnicismos</h2>
+      </div>
+      <div class="topics" data-reveal="group">
+        <div class="topic"><span class="licon licon--currency-bitcoin" aria-hidden="true"><i class="licon__bi bi bi-currency-bitcoin"></i></span> Criptomonedas</div>
+        <div class="topic"><span class="licon licon--wallet2" aria-hidden="true"><i class="licon__bi bi bi-wallet2"></i></span> Wallets</div>
+        <div class="topic"><span class="licon licon--link-45deg" aria-hidden="true"><i class="licon__bi bi bi-link-45deg"></i></span> Smart contracts</div>
+        <div class="topic"><span class="licon licon--diagram-2" aria-hidden="true"><i class="licon__bi bi bi-diagram-2"></i></span> Redes de nodos</div>
+        <div class="topic"><span class="licon licon--robot" aria-hidden="true"><i class="licon__bi bi bi-robot"></i></span> Modelos de IA</div>
+        <div class="topic"><span class="licon licon--chat-square-text" aria-hidden="true"><i class="licon__bi bi bi-chat-square-text"></i></span> Prompts</div>
+        <div class="topic"><span class="licon licon--bug" aria-hidden="true"><i class="licon__bi bi bi-bug"></i></span> Phishing</div>
+        <div class="topic"><span class="licon licon--key" aria-hidden="true"><i class="licon__bi bi bi-key"></i></span> Verificación 2FA</div>
+      </div>
+    </div>
+  </section>
+<section class="section--tight">
+    <div class="container">
+      <div class="trust" data-reveal="group">
+        <div class="trust__item"><span class="licon licon--translate" aria-hidden="true"><i class="licon__bi bi bi-translate"></i></span> Explicaciones en español claro</div>
+        <div class="trust__item"><span class="licon licon--people" aria-hidden="true"><i class="licon__bi bi bi-people"></i></span> Pensado para quien empieza de cero</div>
+        <div class="trust__item"><span class="licon licon--emoji-smile" aria-hidden="true"><i class="licon__bi bi bi-emoji-smile"></i></span> Ejemplos del día a día</div>
+        <div class="trust__item"><span class="licon licon--patch-check" aria-hidden="true"><i class="licon__bi bi bi-patch-check"></i></span> Divulgación sin promesas comerciales</div>
+      </div>
+    </div>
+  </section>
+<section class="section">
+    <div class="container">
+      <div class="section__head" data-reveal>
+        <span class="eyebrow"><span class="licon licon--list-ol" aria-hidden="true"><i class="licon__bi bi bi-list-ol"></i></span> Cómo aprendes aquí</span>
+        <h2 class="section__title">De la curiosidad a entenderlo de verdad</h2>
+      </div>
+      <div class="grid grid--2" data-reveal="group">
+        <div class="step"><span class="step__no">1</span><div><h3>Empiezas por una idea</h3><p>Cada tema arranca con una analogía cotidiana, sin dar nada por sabido.</p></div></div>
+        <div class="step"><span class="step__no">2</span><div><h3>Sumas conceptos clave</h3><p>Vamos añadiendo las piezas necesarias, una a una, en bloques cortos.</p></div></div>
+        <div class="step"><span class="step__no">3</span><div><h3>Lo ves en ejemplos reales</h3><p>Conectamos cada idea con situaciones que reconoces del día a día.</p></div></div>
+        <div class="step"><span class="step__no">4</span><div><h3>Repasas cuando quieras</h3><p>El glosario y el blog te dejan volver a cualquier concepto en segundos.</p></div></div>
+      </div>
+    </div>
+  </section>
+<section class="section section--alt">
+    <div class="container">
+      <div class="section__head" data-reveal>
+        <span class="eyebrow"><span class="licon licon--newspaper" aria-hidden="true"><i class="licon__bi bi bi-newspaper"></i></span> Del blog</span>
+        <h2 class="section__title">Lecturas breves para empezar</h2>
+        <p class="section__lead">Tres artículos divulgativos, uno por cada tema. Sin precios ni recomendaciones: solo explicaciones.</p>
+      </div>
+      <div class="grid grid--3" data-reveal="group">
+        <article class="post-card">
+          <div class="post-card__media cover cover--chain"><span class="licon licon--diagram-3" aria-hidden="true"><i class="licon__bi bi bi-diagram-3"></i></span><span class="post-card__cat">Blockchain</span></div>          <div class="post-card__body">
+            <div class="post-card__meta"><span><span class="licon licon--calendar3" aria-hidden="true"><i class="licon__bi bi bi-calendar3"></i></span> 12 jun 2026</span><span><span class="licon licon--clock" aria-hidden="true"><i class="licon__bi bi bi-clock"></i></span> 6 min</span></div>
+            <h3>El blockchain más allá de las monedas</h3>
+            <p>Su uso más interesante no son las criptomonedas, sino registrar y verificar información.</p>
+            <a class="post-card__more" href="blog-blockchain-mas-alla-monedas.html">Leer artículo <span class="licon licon--arrow-right" aria-hidden="true"><i class="licon__bi bi bi-arrow-right"></i></span></a>
+          </div>
+        </article>
+        <article class="post-card">
+          <div class="post-card__media cover cover--ia"><span class="licon licon--cpu" aria-hidden="true"><i class="licon__bi bi bi-cpu"></i></span><span class="post-card__cat">Inteligencia artificial</span></div>          <div class="post-card__body">
+            <div class="post-card__meta"><span><span class="licon licon--calendar3" aria-hidden="true"><i class="licon__bi bi bi-calendar3"></i></span> 09 jun 2026</span><span><span class="licon licon--clock" aria-hidden="true"><i class="licon__bi bi bi-clock"></i></span> 6 min</span></div>
+            <h3>Cómo aprende una inteligencia artificial</h3>
+            <p>Qué significa “entrenar” un modelo y por qué a veces se equivoca con tanta seguridad.</p>
+            <a class="post-card__more" href="blog-como-aprende-una-ia.html">Leer artículo <span class="licon licon--arrow-right" aria-hidden="true"><i class="licon__bi bi bi-arrow-right"></i></span></a>
+          </div>
+        </article>
+        <article class="post-card">
+          <div class="post-card__media cover cover--sec"><span class="licon licon--shield-lock" aria-hidden="true"><i class="licon__bi bi bi-shield-lock"></i></span><span class="post-card__cat">Seguridad digital</span></div>          <div class="post-card__body">
+            <div class="post-card__meta"><span><span class="licon licon--calendar3" aria-hidden="true"><i class="licon__bi bi bi-calendar3"></i></span> 03 jun 2026</span><span><span class="licon licon--clock" aria-hidden="true"><i class="licon__bi bi bi-clock"></i></span> 5 min</span></div>
+            <h3>Seguridad digital: cinco hábitos básicos</h3>
+            <p>Pequeños gestos que reducen muchísimo el riesgo de que te roben una cuenta.</p>
+            <a class="post-card__more" href="blog-seguridad-digital-basica.html">Leer artículo <span class="licon licon--arrow-right" aria-hidden="true"><i class="licon__bi bi bi-arrow-right"></i></span></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+<section class="section--tight">
+    <div class="container">
+      <div class="callout" data-reveal>
+        <span class="licon licon--info-circle" aria-hidden="true"><i class="licon__bi bi bi-info-circle"></i></span>        <p>
+          <b>Aviso importante:</b> Cade Stories es un recurso puramente educativo.
+          No ofrecemos asesoramiento financiero ni de inversión y no promovemos la compra,
+          venta o negociación de ningún activo. Nuestro objetivo es solo que entiendas la tecnología.
+        </p>
+      </div>
+    </div>
+  </section>
+<section class="section">
+    <div class="container">
+      <div class="cta-band" data-reveal>
+        <h2>¿Listo para entender la tecnología sin complicaciones?</h2>
+        <p>Empieza por la guía paso a paso. Está pensada para personas sin conocimientos técnicos previos.</p>
+        <a class="btn btn--light" href="aprender.html"><span class="licon licon--rocket-takeoff licon--on-light" aria-hidden="true"><i class="licon__bi bi bi-rocket-takeoff"></i></span> Comenzar ahora</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+﻿<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a class="brand" href="index.html">
+          <span class="brand__mark" aria-hidden="true"><svg class="brand-logo" viewBox="0 0 32 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cade Stories"><rect class="brand-logo__frame" x="7" y="3" width="18" height="34" rx="9" fill="none" stroke="currentColor" stroke-width="1.35" opacity="0.9"/><line class="brand-logo__bar brand-logo__bar--1" x1="11" y1="13" x2="21" y2="13" stroke="currentColor" stroke-width="1.45" stroke-linecap="round"/><line class="brand-logo__bar brand-logo__bar--2" x1="11" y1="20" x2="24" y2="20" stroke="currentColor" stroke-width="1.45" stroke-linecap="round"/><line class="brand-logo__bar brand-logo__bar--3" x1="11" y1="27" x2="17" y2="27" stroke="currentColor" stroke-width="1.45" stroke-linecap="round"/></svg></span>          <span class="brand__name">Cade <b>Stories</b></span>
+        </a>
+        <p class="footer__about">
+          Un proyecto educativo independiente que cuenta, en lenguaje claro, cómo funcionan
+          el blockchain, la inteligencia artificial y la seguridad digital. Solo conocimiento,
+          nada que comprar.
+        </p>
+        <div class="footer__socials" aria-label="Redes sociales">
+          <a href="#" aria-label="Boletín por correo"><span class="licon licon--envelope" aria-hidden="true"><i class="licon__bi bi bi-envelope"></i></span></a>
+          <a href="#" aria-label="Canal de divulgación"><span class="licon licon--rss" aria-hidden="true"><i class="licon__bi bi bi-rss"></i></span></a>
+          <a href="#" aria-label="Comunidad"><span class="licon licon--people" aria-hidden="true"><i class="licon__bi bi bi-people"></i></span></a>
+        </div>
+      </div>
+
+      <div class="footer__col">
+        <h4>Contenido</h4>
+        <ul>
+          <li><a href="aprender.html">Guía de aprendizaje</a></li>
+          <li><a href="glosario.html">Glosario</a></li>
+          <li><a href="blog.html">Blog y novedades</a></li>
+          <li><a href="sobre-nosotros.html">Quiénes somos</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacidad.html">Política de privacidad</a></li>
+          <li><a href="terminos.html">Términos de uso</a></li>
+          <li><a href="cookies.html">Política de cookies</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Dónde estamos</h4>
+        <ul class="footer__contact">
+          <li><span class="contact-info__icon"><span class="licon licon--geo-alt" aria-hidden="true"><i class="licon__bi bi bi-geo-alt"></i></span></span><span>Carrer de Pau Claris 138, 4ª planta, 08009 Barcelona, España</span></li>
+          <li><span class="contact-info__icon"><span class="licon licon--envelope" aria-hidden="true"><i class="licon__bi bi bi-envelope"></i></span></span><a href="mailto:hola@cadestories.com">hola@cadestories.com</a></li>
+          <li><span class="contact-info__icon"><span class="licon licon--telephone" aria-hidden="true"><i class="licon__bi bi bi-telephone"></i></span></span><a href="tel:+34932451870">+34 932 45 18 70</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>&copy; 2026 Cade Stories. Contenido con fines educativos e informativos.</span>
+      <div class="footer__bottom-links">
+        <a href="privacidad.html">Privacidad</a>
+        <a href="terminos.html">Términos</a>
+        <a href="cookies.html">Cookies</a>
+      </div>
+    </div>
+  </div>
+<div class="cookie" id="cookie-banner" role="dialog" aria-live="polite" aria-label="Consentimiento de cookies" hidden>
+    <div class="cookie__text">
+      <strong>Usamos cookies</strong>
+      <p>Utilizamos cookies necesarias para que el sitio funcione y, con tu permiso, cookies de preferencias, estadística y marketing (Microsoft Advertising / UET). Consulta nuestra <a href="cookies.html" style="color:var(--accent-soft)">política de cookies</a> y la <a href="privacidad.html" style="color:var(--accent-soft)">política de privacidad</a>.</p>
+    </div>
+    <div class="cookie__actions">
+      <button class="cookie__btn cookie__btn--reject" id="cookie-reject" type="button">Solo necesarias</button>
+      <button class="cookie__btn cookie__btn--config" id="cookie-config" type="button">Configurar</button>
+      <button class="cookie__btn cookie__btn--accept" id="cookie-accept" type="button">Aceptar todas</button>
+    </div>
+  </div>
+<div class="modal" id="cookie-modal" aria-hidden="true">
+    <div class="modal__dialog" role="dialog" aria-modal="true" aria-label="Configuración de cookies">
+      <h3>Configuración de cookies</h3>
+      <p style="color:var(--muted)">Puedes activar o desactivar las categorías opcionales. Las cookies necesarias siempre están activas.</p>
+
+      <label class="modal__opt">
+        <span><strong>Necesarias</strong><br><small>Imprescindibles para el funcionamiento básico del sitio.</small></span>
+        <input type="checkbox" checked disabled>
+      </label>
+      <label class="modal__opt">
+        <span><strong>Preferencias</strong><br><small>Recuerdan tus ajustes, como el idioma o la región.</small></span>
+        <input type="checkbox" id="ck-pref">
+      </label>
+      <label class="modal__opt">
+        <span><strong>Estadística</strong><br><small>Nos ayudan a entender, de forma anónima, qué contenidos son útiles.</small></span>
+        <input type="checkbox" id="ck-stat">
+      </label>
+      <label class="modal__opt">
+        <span><strong>Marketing / Microsoft UET</strong><br><small>Medición de campañas en Microsoft Advertising (UET). Permite conversiones y remarketing solo si las aceptas.</small></span>
+        <input type="checkbox" id="ck-marketing">
+      </label>
+
+      <div class="modal__footer">
+        <button class="btn btn--ghost" id="cookie-modal-close" type="button">Cerrar</button>
+        <button class="btn btn--ghost" id="cookie-save" type="button">Guardar selección</button>
+        <button class="btn btn--primary" id="cookie-modal-accept" type="button">Aceptar todas</button>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/lz-canvas.js"></script>
+</body>
+</html>

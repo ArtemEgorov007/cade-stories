@@ -1,0 +1,202 @@
+/* LayerZero hero + marquee — index.php only */
+
+/* Roboto like layerzero.network */
+.page-home {
+  --font-head: "Roboto", "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Roboto", "Inter", system-ui, sans-serif;
+  --font-mono: "Roboto Mono", "JetBrains Mono", monospace;
+}
+
+.page-home body,
+.page-home {
+  background: #0a0a0a;
+}
+
+/* Full-viewport hero */
+.hero--lz {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: calc(100vh - 4.6rem);
+  min-height: calc(100dvh - 4.6rem);
+  padding: 18vh 1.5rem 3rem;
+  overflow: hidden;
+  text-align: center;
+}
+
+.hero--lz .hero__canvas-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  contain: layout paint;
+}
+
+.hero--lz #lz-hero-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  contain: strict;
+}
+
+/* Intro: canvas → scrim fade → text stagger (main.js timings) */
+.hero--lz::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    radial-gradient(ellipse 85% 65% at 50% 38%, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.72) 72%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.25) 45%, rgba(0, 0, 0, 0.65) 100%);
+  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero--lz.is-scrim-in::before {
+  opacity: 1;
+}
+
+.hero--lz .hero__center {
+  position: relative;
+  z-index: 2;
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: 0 0.25rem;
+}
+
+.hero--lz .hero__eyebrow {
+  display: block;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.hero--lz .hero__title-lz {
+  margin: 0;
+  font-family: var(--font-head);
+  font-size: clamp(2.4rem, 6vw, 4.25rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+
+.hero--lz .hero__title-muted {
+  display: block;
+  margin-top: 0.35rem;
+  color: rgba(255, 255, 255, 0.78);
+  font-weight: 400;
+}
+
+.hero--lz .hero__lead-lz {
+  max-width: 36rem;
+  margin: 1.75rem auto 0;
+  font-size: 1.08rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 1px 24px rgba(0, 0, 0, 0.65);
+}
+
+.hero--lz .hero__actions {
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.hero--lz .btn--lz {
+  min-width: 11rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: 0;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.hero--lz .btn--ghost.btn--lz {
+  border-radius: 0;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+.hero--lz .hero__note {
+  justify-content: center;
+  margin-top: 1.25rem;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Topics marquee (replaces LZ partners strip) */
+.lz-marquee {
+  border-block: 1px solid rgba(255, 255, 255, 0.1);
+  background: #0a0a0a;
+  overflow: hidden;
+  padding: 0.85rem 0;
+}
+
+.lz-marquee__viewport {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.lz-marquee__track {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  width: max-content;
+  animation: lz-marquee-scroll 80s linear infinite;
+  will-change: transform;
+}
+
+.lz-marquee__track span {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  white-space: nowrap;
+}
+
+.lz-marquee__track .lz-marquee__dot {
+  color: rgba(255, 255, 255, 0.2);
+  letter-spacing: 0;
+}
+
+@keyframes lz-marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (max-width: 640px) {
+  .hero--lz { padding-top: 14vh; }
+  .hero--lz .hero__actions { flex-direction: column; align-items: stretch; }
+}
+
+.hero--lz .hero__title-lz {
+  text-shadow: 0 2px 28px rgba(0, 0, 0, 0.55);
+}
+.hero--lz .hero__actions .btn--lz {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+}
+
+.js .hero--lz .hero__center.reveal-stagger > * {
+  opacity: 0;
+}
+
+.js .hero--lz .hero__center.reveal-stagger.is-in > * {
+  opacity: 0;
+  animation: none;
+}
+
+.js .hero--lz.is-text-in .hero__center.reveal-stagger.is-in > * {
+  animation: cs-reveal-up 1.15s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+

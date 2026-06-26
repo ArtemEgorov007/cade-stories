@@ -1,0 +1,396 @@
+/* ============================================================
+   theme-lz.css — LayerZero-inspired dark monochrome layer.
+   Loaded AFTER tokens.css + style.css, so it re-declares the
+   design tokens (flips the whole site to dark) and overrides
+   the few components that hardcode light colors or gradients.
+   ============================================================ */
+
+:root {
+  /* Monochrome palette: white on near-black, hairline borders */
+  --brand: #ffffff;
+  --brand-strong: #ffffff;
+  --brand-soft: rgba(255, 255, 255, 0.85);
+  --brand-tint: rgba(255, 255, 255, 0.06);
+  --brand-rgb: 255, 255, 255;
+
+  --accent: #ffffff;
+  --accent-soft: #ffffff;
+  --accent-tint: rgba(255, 255, 255, 0.06);
+  --accent-rgb: 255, 255, 255;
+
+  --ink: #ffffff;
+  --ink-soft: rgba(255, 255, 255, 0.74);
+  --muted: rgba(255, 255, 255, 0.5);
+  --line: rgba(255, 255, 255, 0.12);
+  --line-soft: rgba(255, 255, 255, 0.07);
+
+  --surface: #0c0c0e;
+  --surface-2: #121215;
+  --surface-3: #1a1a1e;
+
+  --bg: #000000;
+  --bg-rgb: 0, 0, 0;
+
+  --night: #08080a;
+  --night-2: #101013;
+  --night-rgb: 8, 8, 10;
+
+  /* Sharper, infrastructure-grade corners */
+  --radius-sm: 6px;
+  --radius: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  /* Shadows are near-invisible on black — keep them minimal */
+  --shadow-sm: 0 1px 0 rgba(255, 255, 255, 0.03);
+  --shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 40px 90px rgba(0, 0, 0, 0.6);
+
+  --font-head: "Space Grotesk", "Sora", "Segoe UI", system-ui, sans-serif;
+
+  --container: 1200px;
+}
+
+/* ---------- Base ---------- */
+body {
+  background-color: #000;
+  background-image:
+    radial-gradient(circle at 50% -8%, rgba(255, 255, 255, 0.07), transparent 55%);
+}
+
+::selection {
+  background: #ffffff;
+  color: #000000;
+}
+
+h1, h2, h3, h4 { letter-spacing: -0.03em; }
+
+a { color: #fff; }
+a:hover { color: rgba(255, 255, 255, 0.7); }
+.article__body a,
+.legal__block a { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------- Eyebrow → LayerZero mono label "/// LABEL" ---------- */
+.eyebrow {
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.22em;
+  font-size: 0.72rem;
+}
+.eyebrow .licon__bi,
+.eyebrow .licon > .bi {
+  display: inline-block;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+.eyebrow::before {
+  content: "/// ";
+  color: rgba(255, 255, 255, 0.35);
+  margin-right: 0.1rem;
+}
+
+/* ---------- Buttons ---------- */
+.btn { border-radius: 999px; }
+
+.btn--primary {
+  color: #000;
+  background: #fff;
+  box-shadow: none;
+}
+.btn--primary:hover {
+  color: #000;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.btn--ghost {
+  color: #fff;
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: none;
+}
+.btn--ghost:hover {
+  color: #fff;
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.btn--light { color: #000; background: #fff; }
+.btn--light:hover { color: #000; background: rgba(255, 255, 255, 0.86); }
+
+/* ---------- Topbar / brand / nav ---------- */
+.topbar {
+  background: rgba(0, 0, 0, 0.7);
+  border-bottom: 1px solid var(--line);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+.brand { color: #fff; }
+.brand:hover { color: #fff; }
+.brand__mark {
+  color: #fff;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  box-shadow: none;
+}
+.brand__name b { color: #fff; }
+.nav__link:hover { color: #fff; background: rgba(255, 255, 255, 0.06); }
+.nav__link.is-active { color: #fff; }
+.nav__link.is-active::after { background: #fff; }
+
+/* ---------- Hero ---------- */
+.hero__title em {
+  background: linear-gradient(120deg, #fff 30%, rgba(255, 255, 255, 0.45));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero__note i { color: rgba(255, 255, 255, 0.7); }
+
+/* ---------- Pillars + bracket index ---------- */
+.pillar {
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+.pillar:hover { border-color: rgba(255, 255, 255, 0.32); }
+.pillar::before { background: #fff; }
+.pillar__icon,
+.pillar__icon--accent,
+.pillar__icon--ink {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: none;
+}
+.pillar__more { color: #fff; }
+
+.idx {
+  position: absolute;
+  top: 1.4rem;
+  right: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* ---------- Cards / steps / misc mono fixes ---------- */
+.card { background: var(--surface); border: 1px solid var(--line); }
+.card:hover { border-color: rgba(255, 255, 255, 0.3); }
+.card__icon,
+.card__icon--accent { color: #fff; background: rgba(255, 255, 255, 0.06); }
+
+.trust { background: var(--surface); border: 1px solid var(--line); }
+.trust__item i { color: #fff; }
+
+.step { background: var(--surface); border: 1px solid var(--line); }
+.step__no {
+  color: #000;
+  background: #fff;
+  border-radius: 8px;
+}
+
+.feature-list i { color: #fff; }
+
+.callout {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line);
+}
+.callout i { color: #fff; }
+
+/* ---------- CTA band → bordered dark panel ---------- */
+.cta-band {
+  color: #fff;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  box-shadow: none;
+}
+.cta-band::after {
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.06), transparent 70%);
+}
+.cta-band p { color: rgba(255, 255, 255, 0.65); }
+
+/* ---------- Glossary / terms / toc ---------- */
+.toc { background: var(--surface); border: 1px solid var(--line); }
+.toc a { background: rgba(255, 255, 255, 0.05); color: rgba(255, 255, 255, 0.7); }
+.toc a:hover { background: rgba(255, 255, 255, 0.12); color: #fff; }
+.glossary-letters span {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: #fff;
+}
+.guide__block { background: var(--surface); border: 1px solid var(--line); }
+.guide__block h2 i { color: #fff; }
+.term { background: var(--surface); border: 1px solid var(--line); }
+.term:hover { border-color: rgba(255, 255, 255, 0.28); }
+.term__tag { color: #fff; background: rgba(255, 255, 255, 0.08); }
+
+/* ---------- Posts / articles ---------- */
+.post-card { background: var(--surface); border: 1px solid var(--line); }
+.post-card__media { background: var(--surface-3); }
+.post-card__media .post-card__cat { background: rgba(0, 0, 0, 0.55); }
+.post-card__more { color: #fff; }
+.article__media { border: 1px solid var(--line); }
+
+/* ---------- Page hero / faq ---------- */
+.page-hero {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, transparent 100%);
+  border-bottom: 1px solid var(--line);
+}
+.faq__item { background: var(--surface); border: 1px solid var(--line); }
+.faq__q { color: #fff; }
+.faq__q i { color: #fff; }
+
+/* ---------- Forms ---------- */
+.form { background: var(--surface); border: 1px solid var(--line); }
+.field label { color: #fff; }
+.field input,
+.field textarea { background: var(--surface-2); color: #fff; border-color: var(--line); }
+.field input:focus,
+.field textarea:focus {
+  background: var(--surface-3);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.08);
+}
+.captcha { background: rgba(255, 255, 255, 0.04); border: 1px solid var(--line); }
+.consent input,
+.modal__opt input,
+.field input { accent-color: #fff; }
+
+/* ---------- Footer / cookie / modal ---------- */
+.footer { background: #000; border-top: 1px solid var(--line); }
+.footer__brand .brand__name b { color: #fff; }
+.footer__contact i { color: rgba(255, 255, 255, 0.7); }
+.footer__socials a:hover { background: rgba(255, 255, 255, 0.18); }
+
+.cookie { background: var(--surface-2); border: 1px solid var(--line); }
+.cookie__btn--accept { background: #fff; color: #000; }
+
+.modal__dialog { background: var(--surface); border: 1px solid var(--line); }
+.modal__opt { background: var(--surface-2); border: 1px solid var(--line); }
+.thanks__icon { color: #000; background: #fff; }
+
+.legal__block { background: var(--surface); border: 1px solid var(--line); }
+
+/* ============================================================
+   New LayerZero-style building blocks (used on the homepage)
+   ============================================================ */
+
+/* Stats band */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.stat {
+  padding: 2rem 1.6rem;
+  background: #000;
+}
+.stat__num {
+  font-family: var(--font-head);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: #fff;
+  line-height: 1;
+}
+.stat__label {
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* Topic grid (LayerZero "partners" motif) */
+.topics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.topic {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 1.3rem 1.4rem;
+  background: #000;
+  color: rgba(255, 255, 255, 0.78);
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  transition: background-color 0.2s var(--ease-out), color 0.2s var(--ease-out);
+}
+.topic:hover { background: rgba(255, 255, 255, 0.04); color: #fff; }
+.topic i { color: rgba(255, 255, 255, 0.5); font-size: 1.1rem; }
+
+/* Section eyebrow that carries its own bracket index inline */
+.section__index {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 860px) {
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .topics { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 520px) {
+  .stats { grid-template-columns: 1fr; }
+  .topics { grid-template-columns: 1fr; }
+}
+
+/* Monochrome decorative imagery to match the LayerZero palette */
+.hero__media svg,
+.split__media svg,
+.article__media svg,
+.post-card__media svg {
+  filter: grayscale(1) contrast(1.02) brightness(1.03);
+}
+
+/* ---------- Glossary letter filter ---------- */
+.glossary-letters { gap: 0.4rem; align-items: center; }
+.gl-letter {
+  min-width: 2.4rem;
+  height: 2.4rem;
+  padding: 0 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: rgba(255, 255, 255, 0.7);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.18s var(--ease-out), color 0.18s var(--ease-out),
+    border-color 0.18s var(--ease-out), transform 0.12s var(--ease-out);
+}
+.gl-letter:hover { color: #fff; border-color: rgba(255, 255, 255, 0.4); }
+.gl-letter:active { transform: scale(0.95); }
+.gl-letter.is-active {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+.glossary-empty {
+  margin-top: 1.5rem;
+  text-align: center;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+}
