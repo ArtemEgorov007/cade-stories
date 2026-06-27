@@ -213,6 +213,7 @@ a:hover { color: rgba(255, 255, 255, 0.7); }
 .cta-band::after {
   background:
     radial-gradient(circle, rgba(255, 255, 255, 0.06), transparent 70%);
+  pointer-events: none;
 }
 .cta-band p { color: rgba(255, 255, 255, 0.65); }
 

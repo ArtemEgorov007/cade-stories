@@ -5,8 +5,12 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
 }
 
 body {
@@ -536,10 +540,11 @@ a.card:active { transform: translateY(-1px) scale(0.99); }
   height: 18rem;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
 }
-.cta-band h2 { color: #fff; position: relative; font-size: clamp(1.8rem, 3.4vw, 2.6rem); }
-.cta-band p { color: rgba(255, 255, 255, 0.85); position: relative; max-width: 40rem; margin: 0.6rem auto 1.6rem; }
-.cta-band .btn { position: relative; }
+.cta-band h2 { color: #fff; position: relative; z-index: 1; font-size: clamp(1.8rem, 3.4vw, 2.6rem); }
+.cta-band p { color: rgba(255, 255, 255, 0.85); position: relative; z-index: 1; max-width: 40rem; margin: 0.6rem auto 1.6rem; }
+.cta-band .btn { position: relative; z-index: 1; }
 
 .toc {
   display: flex;
@@ -999,7 +1004,7 @@ a.card:active { transform: translateY(-1px) scale(0.99); }
   border: 1px solid rgba(255,255,255,0.12);
   box-shadow: var(--shadow-lg);
 }
-.cookie[hidden] { display: none !important; }
+.cookie[hidden] { display: none; }
 .cookie__text { min-width: 0; }
 .cookie__text strong { display: block; color: #fff; margin-bottom: 0.2rem; }
 .cookie__text p { margin: 0; font-size: 0.9rem; color: rgba(255,255,255,0.72); }
@@ -1079,7 +1084,8 @@ a.card:active { transform: translateY(-1px) scale(0.99); }
 .mt-2 { margin-top: 1rem; }
 .mt-3 { margin-top: 1.5rem; }
 .mt-4 { margin-top: 2.5rem; }
-.is-hidden { display: none !important; }
+.is-hidden { display: none; }
+.glossary-empty.is-hidden { display: none; }
 
 /* Scroll reveal — progressive enhancement (gated on html.js so content
    is always visible without JS). Animates only transform + opacity. */
@@ -1168,5 +1174,5 @@ a.card:active { transform: translateY(-1px) scale(0.99); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto !important; }
+  html { scroll-behavior: auto; }
 }
