@@ -408,7 +408,23 @@
 }
 
 /* Prevent sticky overlap on mobile nav */
-body.nav-open { overflow: hidden; }
+html.nav-open {
+  overflow: hidden;
+  height: 100%;
+}
+body.nav-open {
+  overflow: hidden;
+  height: 100%;
+  touch-action: none;
+}
+body.nav-open::before {
+  content: "";
+  position: fixed;
+  inset: var(--topbar-h, 4.6rem) 0 0;
+  z-index: 90;
+  background: rgba(0, 0, 0, 0.42);
+  pointer-events: none;
+}
 
 @media (max-width: 640px) {
   .viz-frame { min-height: 280px; }

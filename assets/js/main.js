@@ -191,21 +191,31 @@
     var nav = document.getElementById("nav");
     if (!burger || !nav) return;
 
-    burger.addEventListener("click", function () {
-      var open = nav.classList.toggle("is-open");
+    var scrollY = 0;
+
+    function setNavOpen(open) {
+      if (open === nav.classList.contains("is-open")) return;
+      if (open) scrollY = window.scrollY || window.pageYOffset || 0;
+      nav.classList.toggle("is-open", open);
       burger.classList.toggle("is-open", open);
       burger.setAttribute("aria-expanded", open ? "true" : "false");
       burger.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+      document.documentElement.classList.toggle("nav-open", open);
       document.body.classList.toggle("nav-open", open);
+      document.body.style.touchAction = open ? "none" : "";
+      if (!open) window.scrollTo(0, scrollY);
+    }
+
+    burger.addEventListener("click", function () {
+      setNavOpen(!nav.classList.contains("is-open"));
     });
 
     nav.querySelectorAll("a").forEach(function (link) {
-      link.addEventListener("click", function () {
-        nav.classList.remove("is-open");
-        burger.classList.remove("is-open");
-        burger.setAttribute("aria-expanded", "false");
-        document.body.classList.remove("nav-open");
-      });
+      link.addEventListener("click", function () { setNavOpen(false); });
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && nav.classList.contains("is-open")) setNavOpen(false);
     });
   }
 
