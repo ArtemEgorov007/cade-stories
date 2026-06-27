@@ -326,22 +326,19 @@ img { max-width: 100%; display: block; }
     z-index: 100;
     padding-top: var(--safe-top);
     overflow: visible;
+    background-color: #0a0a0a;
   }
-  body.nav-open .topbar {
-    position: fixed;
+  html.is-telegram-webview .topbar::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 100%;
+    height: var(--tg-chrome-top, 0px);
+    background: #0a0a0a;
+    pointer-events: none;
   }
-  .topbar::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: var(--safe-top);
-  background: #0a0a0a;
-  pointer-events: none;
-  z-index: -1;
-}
-.topbar__inner { position: relative; z-index: 92; }
+  .topbar__inner { position: relative; z-index: 92; }
   .burger { display: inline-flex; z-index: 93; }
   .nav {
     position: fixed;
@@ -354,7 +351,7 @@ img { max-width: 100%; display: block; }
     align-items: stretch;
     gap: 0.25rem;
     margin: 0;
-    padding: 1rem 1.25rem max(1.4rem, env(safe-area-inset-bottom));
+    padding: 1rem 1.25rem max(1.4rem, var(--safe-bottom, env(safe-area-inset-bottom)));
     background: var(--surface);
     border-bottom: 1px solid var(--line);
     box-shadow: var(--shadow);
@@ -1251,7 +1248,7 @@ a.card:active { transform: translateY(-1px) scale(0.99); }
   .cookie {
     left: 1rem;
     right: 1rem;
-    bottom: max(1rem, env(safe-area-inset-bottom));
+    bottom: max(1rem, var(--safe-bottom, env(safe-area-inset-bottom)));
     flex-direction: column;
     align-items: stretch;
   }
