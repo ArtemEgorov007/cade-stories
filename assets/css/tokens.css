@@ -1,10 +1,7 @@
 :root {
-  --host-inset-top: 0px;
-  --host-inset-bottom: 0px;
-  --tg-chrome-top: 0px;
-  --safe-top: max(env(safe-area-inset-top, 0px), var(--host-inset-top, 0px));
-  --safe-bottom: max(env(safe-area-inset-bottom, 0px), var(--host-inset-bottom, 0px));
-  --topbar-h: calc(4.6rem + var(--safe-top) + var(--tg-chrome-top, 0px));
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --topbar-h: calc(4.6rem + var(--safe-top));
 
   --brand: #047857;
   --brand-strong: #065f46;

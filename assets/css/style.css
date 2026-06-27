@@ -312,19 +312,6 @@ img { max-width: 100%; display: block; }
 .burger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .burger.is-open span:nth-child(2) { opacity: 0; }
 .burger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-html.is-telegram-webview::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: var(--tg-chrome-top, 0px);
-  background: #0a0a0a;
-  z-index: 99;
-  pointer-events: none;
-}
-
 @media (max-width: 920px) {
   body {
     padding-top: var(--topbar-h);
@@ -339,13 +326,6 @@ html.is-telegram-webview::before {
     padding-top: var(--safe-top);
     overflow: visible;
     background-color: #0a0a0a;
-  }
-  html.is-telegram-webview .topbar {
-    top: calc(-1 * var(--tg-chrome-top, 0px));
-    padding-top: calc(var(--safe-top) + var(--tg-chrome-top, 0px));
-  }
-  html.is-telegram-webview .topbar::before {
-    height: calc(var(--safe-top) + var(--tg-chrome-top, 0px));
   }
   .topbar__inner { position: relative; z-index: 92; }
   .burger { display: inline-flex; z-index: 93; }
