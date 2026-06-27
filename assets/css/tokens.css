@@ -4,7 +4,7 @@
   --tg-chrome-top: 0px;
   --safe-top: max(env(safe-area-inset-top, 0px), var(--host-inset-top, 0px));
   --safe-bottom: max(env(safe-area-inset-bottom, 0px), var(--host-inset-bottom, 0px));
-  --topbar-h: calc(4.6rem + var(--safe-top));
+  --topbar-h: calc(4.6rem + var(--safe-top) + var(--tg-chrome-top, 0px));
 
   --brand: #047857;
   --brand-strong: #065f46;
