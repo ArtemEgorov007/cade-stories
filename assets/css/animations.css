@@ -1373,8 +1373,27 @@ html.motion-static .hero--lz::before {
   opacity: 1;
   transition: none;
 }
+html.motion-static .lz-marquee {
+  overflow-x: clip;
+  max-width: 100%;
+}
+html.motion-static .lz-marquee__viewport {
+  overflow: hidden;
+  max-width: 100%;
+}
 html.motion-static .lz-marquee__track {
   animation: none !important;
+  transform: none !important;
+  width: 100% !important;
+  max-width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.65rem 1.75rem;
+  will-change: auto;
+}
+/* Second copy in index.php ($line . $line) — hide when scroll is off */
+html.motion-static .lz-marquee__track > *:nth-child(n+25) {
+  display: none !important;
 }
 html.motion-static .brand-logo__frame,
 html.motion-static .brand-logo__line,
