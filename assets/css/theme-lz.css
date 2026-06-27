@@ -52,8 +52,11 @@
 }
 
 /* ---------- Base ---------- */
+html {
+  background-color: #0a0a0a;
+}
 body {
-  background-color: #000;
+  background-color: #0a0a0a;
   background-image:
     radial-gradient(circle at 50% -8%, rgba(255, 255, 255, 0.07), transparent 55%);
 }
@@ -123,10 +126,14 @@ a:hover { color: rgba(255, 255, 255, 0.7); }
 
 /* ---------- Topbar / brand / nav ---------- */
 .topbar {
-  background: rgba(0, 0, 0, 0.7);
+  background-color: #0a0a0a;
+  background: rgba(10, 10, 10, 0.96);
   border-bottom: 1px solid var(--line);
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .topbar { background: #0a0a0a; }
 }
 .brand { color: #fff; }
 .brand:hover { color: #fff; }
