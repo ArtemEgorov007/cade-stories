@@ -208,9 +208,30 @@
     if (mobileMq.addEventListener) mobileMq.addEventListener("change", placeNav);
     else mobileMq.addListener(placeNav);
 
+    function lockPageScroll() {
+      scrollY = window.scrollY || window.pageYOffset || 0;
+      document.body.style.position = "fixed";
+      document.body.style.top = "-" + scrollY + "px";
+      document.body.style.left = "0";
+      document.body.style.right = "0";
+      document.body.style.width = "100%";
+    }
+
+    function unlockPageScroll() {
+      var y = scrollY;
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.left = "";
+      document.body.style.right = "";
+      document.body.style.width = "";
+      document.documentElement.style.scrollBehavior = "auto";
+      window.scrollTo(0, y);
+      document.documentElement.style.removeProperty("scroll-behavior");
+    }
+
     function setNavOpen(open) {
       if (open === nav.classList.contains("is-open")) return;
-      if (open) scrollY = window.scrollY || window.pageYOffset || 0;
+      if (open) lockPageScroll();
       nav.classList.toggle("is-open", open);
       burger.classList.toggle("is-open", open);
       burger.setAttribute("aria-expanded", open ? "true" : "false");
@@ -218,7 +239,7 @@
       document.documentElement.classList.toggle("nav-open", open);
       document.body.classList.toggle("nav-open", open);
       document.body.style.touchAction = open ? "none" : "";
-      if (!open) window.scrollTo(0, scrollY);
+      if (!open) unlockPageScroll();
     }
 
     burger.addEventListener("click", function () {

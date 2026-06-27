@@ -411,6 +411,7 @@
 html.nav-open {
   overflow: hidden;
   height: 100%;
+  scroll-behavior: auto !important;
 }
 body.nav-open {
   overflow: hidden;
