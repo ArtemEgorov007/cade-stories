@@ -15,7 +15,7 @@
 
   function createVignette(ctx, w, h) {
     var mobile = w < 768;
-    var gradH = 0.25 * h * (mobile ? 2 : 1);
+    var gradH = 0.25 * h * (mobile ? 0.85 : 1);
     var top = ctx.createLinearGradient(0, 0, 0, gradH);
     top.addColorStop(0, BG);
     top.addColorStop(1, BG_TRANS);
@@ -107,25 +107,26 @@
       state.frameCount += 1;
 
       var mobile = w < 768;
-      var u = mobile ? 3800 : 11000;
+      var u = mobile ? 10500 : 11000;
       ctx.save();
-      ctx.translate(w / 2, h + (mobile ? 60 : 40));
+      ctx.translate(w / 2, h + (mobile ? 30 : 40));
       var f = map(mouse.y, 0, h, 1.2, -1.2);
       var m = Math.max(320, Math.min(1440, w));
       var p = reduce ? 0 : state.frameCount * map(m, 320, 1440, 0.002, 0.0005);
       var half = w / 2;
-      var lines = mobile ? 22 : 40;
+      var lines = mobile ? 36 : 40;
+      var warpScale = mobile ? 2.1 : 1;
 
       for (var t = 0; t < lines; t++) {
         var r = map(t, 0, lines, 0, Math.PI) + p;
         r = r % Math.PI;
-        var l = (Math.tan(r) - f) * h;
+        var l = ((Math.tan(r) - f) * h) * warpScale;
         var a = Math.abs(l) / 2;
         var o = -h / 2 + l / 2;
         var d = Math.max(0, Math.min(255, map(Math.abs(l), 0, u, -20, 255))) / 255;
         if (d <= 0) continue;
         ctx.strokeStyle = "rgba(255,255,255," + d + ")";
-        ctx.lineWidth = 1;
+        ctx.lineWidth = mobile ? 1.5 : 1;
         if (a > 499999.5) {
           ctx.beginPath();
           ctx.moveTo(-half, -h / 2);

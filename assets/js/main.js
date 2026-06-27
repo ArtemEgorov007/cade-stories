@@ -29,6 +29,7 @@
     initBurger();
     initFaq();
     initCookies();
+    initModalEscape();
     initContactForm();
     initGlossary();
     initSmoothAnchors();
@@ -194,6 +195,7 @@
       var open = nav.classList.toggle("is-open");
       burger.classList.toggle("is-open", open);
       burger.setAttribute("aria-expanded", open ? "true" : "false");
+      burger.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
       document.body.classList.toggle("nav-open", open);
     });
 
@@ -203,6 +205,20 @@
         burger.classList.remove("is-open");
         burger.setAttribute("aria-expanded", "false");
         document.body.classList.remove("nav-open");
+      });
+    });
+  }
+
+
+  function initModalEscape() {
+    document.addEventListener("keydown", function (e) {
+      if (e.key !== "Escape") return;
+      ["cookie-modal", "thanks-modal"].forEach(function (id) {
+        var modal = document.getElementById(id);
+        if (!modal || !modal.classList.contains("is-open")) return;
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+        if (modal.hasAttribute("hidden")) modal.hidden = true;
       });
     });
   }
@@ -265,12 +281,14 @@
       if (modal) {
         modal.classList.add("is-open");
         modal.setAttribute("aria-hidden", "false");
+        modal.hidden = false;
       }
     }
     function closeModal() {
       if (!modal) return;
       modal.classList.remove("is-open");
       modal.setAttribute("aria-hidden", "true");
+      modal.hidden = true;
     }
 
     function accept(all) {
@@ -342,8 +360,18 @@
     }
     newCaptcha();
 
-    function openThanks() { if (modal) modal.classList.add("is-open"); }
-    function closeThanks() { if (modal) modal.classList.remove("is-open"); }
+    function openThanks() {
+      if (!modal) return;
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      modal.hidden = false;
+    }
+    function closeThanks() {
+      if (!modal) return;
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      modal.hidden = true;
+    }
     var closeBtn = document.getElementById("thanks-close");
     if (closeBtn) closeBtn.addEventListener("click", closeThanks);
     if (modal) modal.addEventListener("click", function (e) { if (e.target === modal) closeThanks(); });
