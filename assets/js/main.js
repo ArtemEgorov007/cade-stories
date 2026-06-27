@@ -194,6 +194,7 @@
     var scrollY = 0;
     var navHome = nav.parentElement;
     var mobileMq = window.matchMedia("(max-width: 920px)");
+    var cookieBanner = document.getElementById("cookie-banner");
 
     function placeNav() {
       if (mobileMq.matches) {
@@ -239,6 +240,10 @@
       document.documentElement.classList.toggle("nav-open", open);
       document.body.classList.toggle("nav-open", open);
       document.body.style.touchAction = open ? "none" : "";
+      if (cookieBanner && !cookieBanner.hidden) {
+        cookieBanner.style.visibility = open ? "hidden" : "";
+        cookieBanner.style.pointerEvents = open ? "none" : "";
+      }
       if (!open) unlockPageScroll();
     }
 

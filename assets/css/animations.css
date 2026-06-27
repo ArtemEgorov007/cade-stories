@@ -419,6 +419,11 @@ body.nav-open {
   height: 100%;
   touch-action: none;
 }
+body.nav-open .cookie,
+body.nav-open #cookie-banner {
+  visibility: hidden;
+  pointer-events: none;
+}
 body.nav-open::before {
   content: "";
   position: fixed;

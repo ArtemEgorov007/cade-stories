@@ -340,7 +340,7 @@ img { max-width: 100%; display: block; }
     position: fixed;
     left: 0;
     right: 0;
-    top: var(--topbar-h, 4.6rem);
+    top: var(--topbar-h);
     bottom: 0;
     z-index: 91;
     flex-direction: column;
@@ -911,6 +911,12 @@ a.card:active { transform: translateY(-1px) scale(0.99); }
   color: var(--accent-soft);
 }
 .contact-info__value { color: #fff; word-break: break-word; }
+.contact-info__value a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding-block: 0.35rem;
+}
 
 .form {
   padding: 1.8rem;

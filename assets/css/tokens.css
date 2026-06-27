@@ -1,4 +1,6 @@
 :root {
+  --safe-top: env(safe-area-inset-top, 0px);
+  --topbar-h: calc(4.6rem + var(--safe-top));
 
   --brand: #047857;
   --brand-strong: #065f46;
