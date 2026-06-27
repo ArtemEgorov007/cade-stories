@@ -192,6 +192,21 @@
     if (!burger || !nav) return;
 
     var scrollY = 0;
+    var navHome = nav.parentElement;
+    var mobileMq = window.matchMedia("(max-width: 920px)");
+
+    function placeNav() {
+      if (mobileMq.matches) {
+        if (nav.parentElement !== document.body) document.body.appendChild(nav);
+        return;
+      }
+      setNavOpen(false);
+      if (navHome && nav.parentElement !== navHome) navHome.appendChild(nav);
+    }
+
+    placeNav();
+    if (mobileMq.addEventListener) mobileMq.addEventListener("change", placeNav);
+    else mobileMq.addListener(placeNav);
 
     function setNavOpen(open) {
       if (open === nav.classList.contains("is-open")) return;
