@@ -974,28 +974,59 @@ body.nav-open::before {
   height: 1.35rem;
 }
 
-/* Brand logo v4 — LZ bars */
-.brand-logo__frame {
-  stroke-dasharray: 108;
-  stroke-dashoffset: 108;
-  animation: brand-draw 2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+/* Brand logo v5 — chain blocks + story lines */
+@keyframes brand-draw {
+  to { stroke-dashoffset: 0; }
 }
-.brand-logo__bar {
-  stroke-dasharray: 20;
-  stroke-dashoffset: 20;
-  opacity: 0;
-  animation: brand-bar-in 0.55s ease forwards;
-}
-.brand-logo__bar--1 { animation-delay: 0.55s; }
-.brand-logo__bar--2 { animation-delay: 0.72s; }
-.brand-logo__bar--3 { animation-delay: 0.88s; }
-@keyframes brand-bar-in {
+@keyframes brand-logo-in {
   to { stroke-dashoffset: 0; opacity: 1; }
 }
-.brand:hover .brand-logo__bar--2 { transform-origin: 11px 20px; animation: brand-bar-pulse 1.8s ease-in-out infinite; }
-@keyframes brand-bar-pulse {
+@keyframes brand-logo-pop {
+  from { opacity: 0; transform: scale(0.82); }
+  to { opacity: 1; transform: scale(1); }
+}
+.brand-logo__frame {
+  stroke-dasharray: 112;
+  stroke-dashoffset: 112;
+  animation: brand-draw 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.brand-logo__block {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: brand-logo-pop 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.brand-logo__block--1 { animation-delay: 0.35s; }
+.brand-logo__block--2 { animation-delay: 0.48s; }
+.brand-logo__block--3 { animation-delay: 0.61s; }
+.brand-logo__link {
+  stroke-dasharray: 6;
+  stroke-dashoffset: 6;
+  opacity: 0;
+  animation: brand-logo-in 0.35s ease forwards;
+}
+.brand-logo__link--1 { animation-delay: 0.52s; }
+.brand-logo__link--2 { animation-delay: 0.65s; }
+.brand-logo__line {
+  stroke-dasharray: 18;
+  stroke-dashoffset: 18;
+  opacity: 0;
+  animation: brand-logo-in 0.5s ease forwards;
+}
+.brand-logo__line--1 { animation-delay: 0.58s; }
+.brand-logo__line--2 { animation-delay: 0.72s; }
+.brand-logo__line--3 { animation-delay: 0.86s; }
+.brand-logo__dot {
+  opacity: 0;
+  animation: brand-logo-pop 0.35s ease forwards;
+  animation-delay: 0.95s;
+}
+.brand:hover .brand-logo__line--2 {
+  animation: brand-line-pulse 1.6s ease-in-out infinite;
+}
+@keyframes brand-line-pulse {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.55; }
+  50% { opacity: 0.5; }
 }
 
 /* Split visual bi fallback */
@@ -1277,9 +1308,9 @@ lord-icon,
   color: #fff;
 }
 .brand-logo {
-  width: 1.55rem;
+  width: 1.45rem;
   height: auto;
-  aspect-ratio: 32 / 40;
+  aspect-ratio: 1;
 }
 :is(.pillar__more, .post-card__more):hover :is(.licon__bi, .licon > .bi) {
   color: #000 !important;
@@ -1403,9 +1434,12 @@ html.motion-static .lz-marquee__viewport {
   max-width: 100%;
 }
 html.motion-static .brand-logo__frame,
+html.motion-static .brand-logo__block,
+html.motion-static .brand-logo__link,
 html.motion-static .brand-logo__line,
 html.motion-static .brand-logo__dot {
   animation: none !important;
   stroke-dashoffset: 0;
   opacity: 1;
+  transform: none;
 }
