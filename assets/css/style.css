@@ -6,6 +6,7 @@
 
 html {
   overflow-x: clip;
+  scroll-padding-top: var(--topbar-h);
 }
 
 .skip-link {
@@ -34,7 +35,7 @@ html {
 }
 
 a, button, input, textarea, select, summary, [tabindex]:not([tabindex="-1"]) {
-  scroll-margin-top: 5.5rem;
+  scroll-margin-top: var(--topbar-h);
 }
 
 html {
@@ -313,7 +314,10 @@ img { max-width: 100%; display: block; }
 .burger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 @media (max-width: 920px) {
-  body.nav-open .topbar {
+  body {
+    padding-top: var(--topbar-h);
+  }
+  .topbar {
     position: fixed;
     top: 0;
     left: 0;
@@ -321,8 +325,11 @@ img { max-width: 100%; display: block; }
     width: 100%;
     z-index: 100;
     padding-top: var(--safe-top);
+    overflow: visible;
   }
-  .topbar { overflow: visible; }
+  body.nav-open .topbar {
+    position: fixed;
+  }
   .topbar::before {
   content: "";
   position: absolute;

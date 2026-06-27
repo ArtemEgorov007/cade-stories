@@ -149,6 +149,14 @@ a:hover { color: rgba(255, 255, 255, 0.7); }
 .nav__link.is-active { color: #fff; }
 .nav__link.is-active::after { background: #fff; }
 
+@media (max-width: 920px) {
+  .topbar {
+    background: #0a0a0a;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
 /* ---------- Hero ---------- */
 .hero__title em {
   background: linear-gradient(120deg, #fff 30%, rgba(255, 255, 255, 0.45));
