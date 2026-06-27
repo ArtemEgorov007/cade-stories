@@ -1254,6 +1254,9 @@ address.footer__contact {
 }
 .footer__contact-item:last-child { border-bottom: 0; }
 .contact-info__address {
+  display: grid;
+  gap: 0.85rem;
+  margin: 0;
   font-style: normal;
 }
 .cookie__link { color: var(--accent-soft); }

@@ -15,7 +15,7 @@
 
   function createVignette(ctx, w, h) {
     var mobile = w < 768;
-    var gradH = 0.25 * h * (mobile ? 0.85 : 1);
+    var gradH = 0.25 * h * (mobile ? 0.72 : 1);
     var top = ctx.createLinearGradient(0, 0, 0, gradH);
     top.addColorStop(0, BG);
     top.addColorStop(1, BG_TRANS);
@@ -55,19 +55,21 @@
     var wrap = document.getElementById("lz-hero-canvas-wrap");
     var canvas = document.getElementById("lz-hero-canvas");
     if (!wrap || !canvas) return;
+    heroEl = wrap.closest(".hero--lz");
 
     var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     var staticPage = false;
     try {
       staticPage = sessionStorage.getItem("cadestories_seen:" + location.pathname) === "1";
     } catch (e) {}
-    var mouse = { y: 0, targetY: 0 };
+    var mouse = { x: 0, y: 0, targetX: 0, targetY: 0, inside: false };
     var vignette = null;
     var state = { width: 0, height: 0, frameCount: 0, animId: 0, running: false };
     var ctx = canvas.getContext("2d", { alpha: true });
     if (!ctx) return;
 
     var resizeQueued = false;
+    var heroEl = null;
 
     function resize() {
       var rect = wrap.getBoundingClientRect();
@@ -77,8 +79,11 @@
       canvas.width = Math.floor(rect.width * dpr);
       canvas.height = Math.floor(rect.height * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      mouse.targetX = rect.width / 2;
       mouse.targetY = rect.height / 2;
+      mouse.x = rect.width / 2;
       mouse.y = rect.height / 2;
+      mouse.inside = false;
       vignette = createVignette(ctx, rect.width, rect.height);
       if (reduce) draw();
     }
@@ -94,7 +99,17 @@
 
     function onMouse(e) {
       var rect = wrap.getBoundingClientRect();
+      mouse.targetX = e.clientX - rect.left;
       mouse.targetY = e.clientY - rect.top;
+      mouse.inside = e.clientX >= rect.left && e.clientX <= rect.right
+        && e.clientY >= rect.top && e.clientY <= rect.bottom;
+    }
+
+    function onMouseLeave() {
+      var rect = wrap.getBoundingClientRect();
+      mouse.inside = false;
+      mouse.targetX = rect.width / 2;
+      mouse.targetY = rect.height / 2;
     }
 
     function draw() {
@@ -102,31 +117,42 @@
       var h = state.height;
       if (!w || !h) return;
 
-      if (!reduce) mouse.y += (mouse.targetY - mouse.y) * 0.1;
+      var mobile = w < 768;
+      if (!reduce) {
+        var ease = mobile ? 0.12 : (mouse.inside ? 0.24 : 0.18);
+        mouse.y += (mouse.targetY - mouse.y) * ease;
+        mouse.x += (mouse.targetX - mouse.x) * ease;
+      }
       clearCanvas(ctx, w, h);
       state.frameCount += 1;
 
-      var mobile = w < 768;
-      var u = mobile ? 10500 : 11000;
+      var u = mobile ? 10500 : 12000;
       ctx.save();
-      ctx.translate(w / 2, h + (mobile ? 30 : 40));
-      var f = map(mouse.y, 0, h, 1.2, -1.2);
+      var parallaxX = mobile ? 0 : (mouse.x - w / 2) * (mouse.inside ? 0.11 : 0.07);
+      var parallaxY = mobile ? 0 : (mouse.y - h / 2) * (mouse.inside ? 0.045 : 0.028);
+      ctx.translate(w / 2 + parallaxX, h + (mobile ? 10 : 40) + parallaxY);
+      if (mobile) ctx.scale(1, 1.28);
+      var tiltBoost = !mobile && mouse.inside ? 1.55 : 1;
+      var tiltRange = mobile ? 1.2 : 2.75;
+      var f = map(mouse.y, 0, h, tiltRange * tiltBoost, -tiltRange * tiltBoost);
+      var skewX = mobile ? 0 : map(mouse.x, 0, w, 0.95, -0.95) * (mouse.inside ? 1.35 : 1);
       var m = Math.max(320, Math.min(1440, w));
       var p = reduce ? 0 : state.frameCount * map(m, 320, 1440, 0.002, 0.0005);
       var half = w / 2;
       var lines = mobile ? 36 : 40;
-      var warpScale = mobile ? 2.1 : 1;
+      var warpScale = mobile ? 2.35 : 1;
 
       for (var t = 0; t < lines; t++) {
         var r = map(t, 0, lines, 0, Math.PI) + p;
         r = r % Math.PI;
-        var l = ((Math.tan(r) - f) * h) * warpScale;
+        var l = ((Math.tan(r) - f - skewX) * h) * warpScale;
         var a = Math.abs(l) / 2;
         var o = -h / 2 + l / 2;
         var d = Math.max(0, Math.min(255, map(Math.abs(l), 0, u, -20, 255))) / 255;
         if (d <= 0) continue;
-        ctx.strokeStyle = "rgba(255,255,255," + d + ")";
-        ctx.lineWidth = mobile ? 1.5 : 1;
+        var glow = mobile ? 0 : (mouse.inside ? 0.14 : 0.06);
+        ctx.strokeStyle = "rgba(255,255,255," + Math.min(1, d + glow) + ")";
+        ctx.lineWidth = mobile ? 1.5 : (mouse.inside ? 1.2 : 1);
         if (a > 499999.5) {
           ctx.beginPath();
           ctx.moveTo(-half, -h / 2);
@@ -181,12 +207,14 @@
       if (state.running || document.hidden) return;
       state.running = true;
       document.addEventListener("mousemove", onMouse, { passive: true });
+      if (heroEl) heroEl.addEventListener("mouseleave", onMouseLeave, { passive: true });
       loop();
     }
 
     function stop() {
       state.running = false;
       document.removeEventListener("mousemove", onMouse);
+      if (heroEl) heroEl.removeEventListener("mouseleave", onMouseLeave);
       if (state.animId) cancelAnimationFrame(state.animId);
       state.animId = 0;
     }
