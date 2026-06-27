@@ -71,9 +71,10 @@
   }
 
   function strokeWarpArcs(ctx, half, h, lines, p, f, skewX, u, warpScale, lineWidth, glow) {
+    var phase = p - Math.floor(p / Math.PI) * Math.PI;
     for (var t = 0; t < lines; t++) {
-      var r = map(t, 0, lines, 0, Math.PI) + p;
-      r = r % Math.PI;
+      var r = map(t, 0, lines, 0, Math.PI) + phase;
+      if (r >= Math.PI) r -= Math.PI;
       var l = ((Math.tan(r) - f - skewX) * h) * warpScale;
       var a = Math.abs(l) / 2;
       var o = -h / 2 + l / 2;
@@ -131,34 +132,55 @@
     if (!ctx) return;
 
     var resizeQueued = false;
+    var resizeTimer = 0;
 
-    function resize() {
+    function resize(force) {
       var rect = wrap.getBoundingClientRect();
+      var nextW = Math.max(1, Math.round(rect.width));
+      var nextH = Math.max(1, Math.round(rect.height));
+      if (!force && Math.abs(nextW - state.width) < 2 && Math.abs(nextH - state.height) < 2) {
+        return;
+      }
+
       var dpr = Math.min(window.devicePixelRatio || 1, 2);
-      state.width = rect.width;
-      state.height = rect.height;
-      canvas.width = Math.floor(rect.width * dpr);
-      canvas.height = Math.floor(rect.height * dpr);
+      var mobile = isMobile(nextW);
+      state.width = nextW;
+      state.height = nextH;
+      canvas.width = Math.floor(nextW * dpr);
+      canvas.height = Math.floor(nextH * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      mouse.targetX = rect.width / 2;
-      mouse.targetY = rect.height / 2;
-      mouse.x = rect.width / 2;
-      mouse.y = rect.height / 2;
-      mouse.inside = false;
-      touch.targetTiltX = 0;
-      touch.targetTiltY = 0;
-      touch.tiltX = 0;
-      touch.tiltY = 0;
-      vignetteDesktop = createVignetteDesktop(ctx, rect.width, rect.height);
-      if (reduce) draw();
+
+      if (!mobile) {
+        mouse.targetX = nextW / 2;
+        mouse.targetY = nextH / 2;
+        mouse.x = nextW / 2;
+        mouse.y = nextH / 2;
+        mouse.inside = false;
+      }
+      if (!mobile || !state.running) {
+        touch.targetTiltX = 0;
+        touch.targetTiltY = 0;
+        touch.tiltX = 0;
+        touch.tiltY = 0;
+      }
+      vignetteDesktop = createVignetteDesktop(ctx, nextW, nextH);
+      if (reduce || (state.running && mobile)) draw();
     }
 
     function scheduleResize() {
+      if (isMobile(state.width || window.innerWidth)) {
+        if (resizeTimer) window.clearTimeout(resizeTimer);
+        resizeTimer = window.setTimeout(function () {
+          resizeTimer = 0;
+          resize(false);
+        }, 220);
+        return;
+      }
       if (resizeQueued) return;
       resizeQueued = true;
       requestAnimationFrame(function () {
         resizeQueued = false;
-        resize();
+        resize(false);
       });
     }
 
@@ -193,8 +215,8 @@
 
     function onTouchEnd() {
       touch.active = false;
-      touch.targetTiltX = 0;
-      touch.targetTiltY = 0;
+      touch.targetTiltX = drift.x * 0.35;
+      touch.targetTiltY = drift.y * 0.35;
     }
 
     function drawDesktop(w, h) {
@@ -224,16 +246,16 @@
 
     function drawMobile(w, h) {
       if (!reduce) {
-        var autoY = Math.sin(state.frameCount * 0.0075) * 0.95 + Math.sin(state.frameCount * 0.0028) * 0.42;
-        var autoX = Math.sin(state.frameCount * 0.0055 + 0.8) * 0.38;
-        drift.y += (autoY - drift.y) * 0.035;
-        drift.x += (autoX - drift.x) * 0.035;
-        var touchEase = touch.active ? 0.22 : 0.08;
+        var autoY = Math.sin(state.frameCount * 0.0052) * 0.68 + Math.sin(state.frameCount * 0.0021) * 0.26;
+        var autoX = Math.sin(state.frameCount * 0.0038 + 0.8) * 0.24;
+        drift.y += (autoY - drift.y) * 0.024;
+        drift.x += (autoX - drift.x) * 0.024;
+        var touchEase = touch.active ? 0.16 : 0.05;
         touch.tiltY += (touch.targetTiltY - touch.tiltY) * touchEase;
         touch.tiltX += (touch.targetTiltX - touch.tiltX) * touchEase;
         if (!touch.active) {
-          touch.tiltY += (0 - touch.tiltY) * 0.06;
-          touch.tiltX += (0 - touch.tiltX) * 0.06;
+          touch.tiltY += (0 - touch.tiltY) * 0.028;
+          touch.tiltX += (0 - touch.tiltX) * 0.028;
         }
       }
 
@@ -296,24 +318,27 @@
       if (heroEl) heroEl.removeEventListener("mouseleave", onMouseLeave);
       if (state.animId) cancelAnimationFrame(state.animId);
       state.animId = 0;
+      if (isMobile(state.width)) draw();
     }
 
-    resize();
+    resize(true);
     if (staticPage) {
       draw();
       window.addEventListener("cadestories:static-page", function () {
-        stop();
-        draw();
+        if (!isMobile(state.width)) {
+          stop();
+          draw();
+        }
       }, { once: true });
-      return;
+      if (!isMobile(state.width)) return;
     }
     start();
     window.addEventListener("resize", scheduleResize, { passive: true });
-    if ("IntersectionObserver" in window) {
+    if ("IntersectionObserver" in window && !isMobile(state.width)) {
       var io = new IntersectionObserver(function (entries) {
         if (entries[0] && entries[0].isIntersecting) start();
         else stop();
-      }, { threshold: 0 });
+      }, { threshold: 0.05, rootMargin: "40px 0px" });
       io.observe(wrap);
     }
 
