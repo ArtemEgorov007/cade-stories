@@ -229,8 +229,8 @@
       var u = 12000;
       var m = Math.max(320, Math.min(1440, w));
       var p = reduce ? 0 : state.frameCount * map(m, 320, 1440, 0.002, 0.0005);
-      var parallaxX = (mouse.x - w / 2) * (mouse.inside ? 0.11 : 0.07);
-      var parallaxY = (mouse.y - h / 2) * (mouse.inside ? 0.045 : 0.028);
+      var parallaxX = (mouse.x - w / 2) * (mouse.inside ? 0.045 : 0.028);
+      var parallaxY = (mouse.y - h / 2) * (mouse.inside ? 0.018 : 0.01);
       var tiltBoost = mouse.inside ? 1.55 : 1;
       var f = map(mouse.y, 0, h, 2.75 * tiltBoost, -2.75 * tiltBoost);
       var skewX = map(mouse.x, 0, w, 0.95, -0.95) * (mouse.inside ? 1.35 : 1);
@@ -238,7 +238,7 @@
       var lineWidth = mouse.inside ? 1.2 : 1;
 
       ctx.save();
-      ctx.translate(w / 2 + parallaxX, h + 40 + parallaxY);
+      ctx.translate(w / 2 + parallaxX, h * 0.9 + parallaxY);
       strokeWarpArcs(ctx, w / 2, h, 40, p, f, skewX, u, 1, lineWidth, glow);
       ctx.restore();
       paintVignetteDesktop(ctx, w, h, vignetteDesktop);
@@ -246,8 +246,8 @@
 
     function drawMobile(w, h) {
       if (!reduce) {
-        var autoY = Math.sin(state.frameCount * 0.0052) * 0.68 + Math.sin(state.frameCount * 0.0021) * 0.26;
-        var autoX = Math.sin(state.frameCount * 0.0038 + 0.8) * 0.24;
+        var autoY = Math.sin(state.frameCount * 0.0052) * 0.34 + Math.sin(state.frameCount * 0.0021) * 0.12;
+        var autoX = Math.sin(state.frameCount * 0.0038 + 0.8) * 0.1;
         drift.y += (autoY - drift.y) * 0.024;
         drift.x += (autoX - drift.x) * 0.024;
         var touchEase = touch.active ? 0.16 : 0.05;
@@ -259,7 +259,7 @@
         }
       }
 
-      var horizonY = h * 0.94;
+      var horizonY = h * 0.9;
       var gridH = h * 1.05;
       var u = 4800;
       var p = reduce ? 0 : state.frameCount * 0.0012;
