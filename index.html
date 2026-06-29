@@ -3,7 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<script>document.documentElement.className += ' js';</script>
+<script>
+(function () {
+  var root = document.documentElement;
+  root.className += ' js';
+  try {
+    if (sessionStorage.getItem('cadestories_seen:' + location.pathname) === '1') {
+      root.classList.add('motion-static');
+    }
+  } catch (e) {}
+})();
+</script>
+<style>.js:not(.motion-static) .hero--lz .hero__center[data-hero-intro] > *{opacity:0}</style>
 <script>
 window.uetq = window.uetq || [];
 window.uetq.push('consent', 'default', { ad_storage: 'denied' });
@@ -42,7 +53,7 @@ window.uetq.push('consent', 'default', { ad_storage: 'denied' });
 <link rel="stylesheet" href="assets/css/style.css?v=1782599792">
 <link rel="stylesheet" href="assets/css/theme-lz.css?v=1782597908">
 <link rel="stylesheet" href="assets/css/animations.css?v=1782598385">
-<link rel="stylesheet" href="assets/css/theme-lz-home.css?v=1782597908">
+<link rel="stylesheet" href="assets/css/theme-lz-home.css?v=1782900000">
 </head>
 <body>
 <a class="skip-link" href="#main">Saltar al contenido</a>
