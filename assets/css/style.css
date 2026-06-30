@@ -7,6 +7,7 @@
 html {
   overflow-x: clip;
   scroll-padding-top: var(--topbar-h);
+  scrollbar-gutter: stable;
 }
 
 .skip-link {
@@ -217,6 +218,7 @@ img { max-width: 100%; display: block; }
   align-items: center;
   gap: 1.5rem;
   min-height: 4.6rem;
+  height: 4.6rem;
 }
 
 .brand {
@@ -269,7 +271,6 @@ img { max-width: 100%; display: block; }
 .nav__link:hover { color: var(--brand); background: var(--brand-tint); }
 .nav__link.is-active {
   color: var(--brand);
-  font-weight: 600;
 }
 .nav__link.is-active::after {
   content: "";
@@ -286,6 +287,8 @@ img { max-width: 100%; display: block; }
   margin-left: 0.6rem;
   min-height: 2.7rem;
   padding: 0.55rem 1.15rem;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .burger {
