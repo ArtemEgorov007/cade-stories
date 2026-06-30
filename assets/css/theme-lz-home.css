@@ -1,10 +1,10 @@
 /* LayerZero hero + marquee — index.php only */
 
-/* Roboto like layerzero.network */
+/* Roboto scoped to home hero/marquee — header/nav keep site-wide tokens */
 .page-home {
-  --font-head: "Roboto", "Space Grotesk", system-ui, sans-serif;
-  --font-body: "Roboto", "Inter", system-ui, sans-serif;
-  --font-mono: "Roboto Mono", "JetBrains Mono", monospace;
+  --lz-font-head: "Roboto", "Space Grotesk", system-ui, sans-serif;
+  --lz-font-body: "Roboto", "Inter", system-ui, sans-serif;
+  --lz-font-mono: "Roboto Mono", "JetBrains Mono", monospace;
 }
 
 .page-home body,
@@ -76,7 +76,7 @@
 .hero--lz .hero__eyebrow {
   display: block;
   margin-bottom: 1.5rem;
-  font-family: var(--font-mono);
+  font-family: var(--lz-font-mono);
   font-size: 0.72rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -85,7 +85,7 @@
 
 .hero--lz .hero__title-lz {
   margin: 0;
-  font-family: var(--font-head);
+  font-family: var(--lz-font-head);
   font-size: clamp(2.4rem, 6vw, 4.25rem);
   font-weight: 400;
   line-height: 1.05;
@@ -103,6 +103,7 @@
 .hero--lz .hero__lead-lz {
   max-width: 36rem;
   margin: 1.75rem auto 0;
+  font-family: var(--lz-font-body);
   font-size: 1.08rem;
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.92);
@@ -118,7 +119,7 @@
   min-width: 11rem;
   padding: 0.85rem 1.6rem;
   border-radius: 0;
-  font-family: var(--font-mono);
+  font-family: var(--lz-font-mono);
   font-size: 0.78rem;
   font-weight: 500;
   letter-spacing: 0.14em;
@@ -162,7 +163,7 @@
 }
 
 .lz-marquee__track span {
-  font-family: var(--font-mono);
+  font-family: var(--lz-font-mono);
   font-size: 0.8rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -274,4 +275,3 @@
   animation: cs-hero-reveal 1.05s cubic-bezier(0.22, 1, 0.36, 1) both;
   transform-origin: center center;
 }
-
